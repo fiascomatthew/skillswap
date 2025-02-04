@@ -1,0 +1,33 @@
+/* === Primary button === */
+.primary-button {
+  display: block;
+  padding: 1rem 1.5rem;
+
+  text-align: center;
+  font-weight: bold;
+
+  color: var(--text-light-color);
+  background-color: var(--dark-color);
+
+  border: 1px solid var(--dark-color);
+  border-radius: 0.8rem;
+}
+
+.primary-button:hover {
+  background-color: var(--darker-color);
+  border-color: var(--darker-color);
+
+  transition: all 0.1s ease-in-out;
+}
+
+/* === Secondary button === */
+
+.secondary-button {
+  color: var(--text-dark-color);
+  font-weight: bold
+}
+
+.secondary-button:hover {
+  color: var(--text-alt-color);
+  transition: all 0.1s ease-in-out;
+}

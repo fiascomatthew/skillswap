@@ -1,0 +1,49 @@
+/* ====== General ======= */
+
+body {
+  font-family: Roboto, sans-serif;
+  color: var(--text-color);
+}
+
+section {
+  /* margin: calc(var(--gutter) * 3); */
+}
+
+@media screen and (max-width: 720px) {
+  /* section {
+    margin: 4rem 0;
+  } */
+}
+
+
+/* ======== Header ======== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    padding: 1rem 1rem;
+  }
+}
+
+.header__logo-link{}
+
+.header__logo-img {
+  width: auto;
+  height: 3rem; 
+}
+
+.header__signup-login {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__login {}
+
+.header__signup {}

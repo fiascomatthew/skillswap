@@ -1,0 +1,13 @@
+.about {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/about2.png");
+    background-size: cover;
+    background-position: center;
+    
+    margin-bottom: 5rem;
+}
