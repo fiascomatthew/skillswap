@@ -15,6 +15,37 @@
 <body>
 	<%- include('../partials/header') %>
 
+	<main class="main">
+		<section class="about">
+			<div class="about__content">
+				<div class="about__text">
+					<h1 class="about__title">Échangez, apprenez, évoluez avec SkillSwap</h1>
+					<p class="about__description">
+						SkillSwap est une plateforme qui met en relation des particuliers souhaitant partager et apprendre 
+						de nouvelles compétences. Rejoignez une communauté dynamique où l'apprentissage se fait par l'échange.
+					</p>
+				</div>
+				
+				<form class="about__search" action="/search" method="GET">
+					<label for="search-skills" class="about__search-label">
+						<span class="sr-only">Rechercher une compétence</span>
+					</label>
+					<input 
+						type="text" 
+						id="search-skills" 
+						name="query" 
+						class="about__search-input" 
+						placeholder="Cuisine thaï, yoga, bricolage, ..." 
+						aria-label="Rechercher une compétence"
+					>
+					<button type="submit" class="about__search-button" aria-label="Rechercher">
+						<i class="fas fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</section>
+		
+	</main>
 	<%- include('../partials/footer') %>
 </body>
 
