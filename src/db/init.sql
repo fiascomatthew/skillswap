@@ -2,7 +2,7 @@
 BEGIN;
 
 -- Table des utilisateurs
-CREATE TABLE users (
+CREATE TABLE "user" (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(50) NOT NULL CHECK (char_length(firstname) > 0),
     lastname VARCHAR(50) NOT NULL CHECK (char_length(lastname) > 0),
@@ -41,7 +41,7 @@ CREATE TABLE availability (
     end_time TIME NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_availability_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT fk_availability_user FOREIGN KEY ("user_id") REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 -- Table des messages entre utilisateurs
@@ -52,8 +52,8 @@ CREATE TABLE message (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_message_sender FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_message_receiver FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT fk_message_sender FOREIGN KEY (sender_id) REFERENCES "user"(id) ON DELETE CASCADE,
+    CONSTRAINT fk_message_receiver FOREIGN KEY (receiver_id) REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 -- Table des évaluations entre utilisateurs
@@ -65,8 +65,8 @@ CREATE TABLE review (
     review TEXT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_review_reviewer FOREIGN KEY (reviewer_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_review_reviewee FOREIGN KEY (reviewee_id) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT fk_review_reviewer FOREIGN KEY (reviewer_id) REFERENCES "user"(id) ON DELETE CASCADE,
+    CONSTRAINT fk_review_reviewee FOREIGN KEY (reviewee_id) REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 -- Table des compétences possédées par un utilisateur
@@ -78,7 +78,7 @@ CREATE TABLE user_has_skill (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, skill_id),
-    CONSTRAINT fk_user_skill_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user_skill_user FOREIGN KEY (user_id) REFERENCES "user"(id) ON DELETE CASCADE,
     CONSTRAINT fk_user_skill_skill FOREIGN KEY (skill_id) REFERENCES skill(id) ON DELETE CASCADE
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE user_has_interest (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, interest_id),
-    CONSTRAINT fk_user_interest_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user_interest_user FOREIGN KEY (user_id) REFERENCES "user"(id) ON DELETE CASCADE,
     CONSTRAINT fk_user_interest_skill FOREIGN KEY (interest_id) REFERENCES skill(id) ON DELETE CASCADE
 );
 
@@ -101,8 +101,8 @@ CREATE TABLE user_has_follower (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, follower_id),
-    CONSTRAINT fk_follower_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_follower_follower FOREIGN KEY (follower_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_follower_user FOREIGN KEY (user_id) REFERENCES "user"(id) ON DELETE CASCADE,
+    CONSTRAINT fk_follower_follower FOREIGN KEY (follower_id) REFERENCES "user"(id) ON DELETE CASCADE,
     CONSTRAINT chk_no_self_follow CHECK (user_id <> follower_id)
 );
 

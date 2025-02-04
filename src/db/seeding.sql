@@ -1,8 +1,8 @@
 -- Démarrer une transaction
 BEGIN;
 
--- Insérer des utilisateurs dans la table users
-INSERT INTO users (firstname, lastname, email, password, image, location, created_at, updated_at) VALUES
+-- Insérer des utilisateurs dans la table user
+INSERT INTO "user" (firstname, lastname, email, password, image, location, created_at, updated_at) VALUES
 ('Jean', 'Dupont', 'jean.dupont@example.com', 'motdepasse1', NULL, 'Paris', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Marie', 'Curie', 'marie.curie@example.com', 'motdepasse2', NULL, 'Lyon', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Alice', 'Martin', 'alice.martin@example.com', 'motdepasse3', NULL, 'Marseille', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
