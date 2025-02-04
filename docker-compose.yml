@@ -23,3 +23,4 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/db/seeding.sql:/docker-entrypoint-initdb.d/seeding.sql
