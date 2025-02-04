@@ -1,0 +1,23 @@
+<article class="user__profile">
+  <img 
+    class="user__avatar" 
+    src="/images/avatars/<%= user.avatar %>.png" 
+    alt="Photo de profil de <%= user.name %>"
+  >
+  <div class="user__info">
+    <div class="user__identity">
+      <h3 class="user__name"><%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>.</h3>
+      <div class="user__location">
+        <i class="location__icon fa-solid fa-location-dot"></i>
+        <p class="location__text"><%= user.location %></p>
+      </div>
+    </div>
+    <ul class="user__skills">
+      <% user.skills.slice(0, 3).forEach(skill => { %>
+          <li class="user__skill"><%= skill.description %></li>
+      <% }) %>
+    </ul>
+  
+    <a class="user__link" href="/profile/<%= user.id %>">Voir le profil</a>
+  </div>
+</article>

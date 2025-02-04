@@ -19,7 +19,7 @@
 		<section class="about">
 			<div class="about__content">
 				<div class="about__text">
-					<h1 class="about__title">Échangez, apprenez, évoluez avec SkillSwap</h1>
+					<h1 class="about__title">Échangez, apprenez, évoluez</h1>
 					<p class="about__description">
 						SkillSwap est une plateforme qui met en relation des particuliers souhaitant partager et apprendre 
 						de nouvelles compétences. Rejoignez une communauté dynamique où l'apprentissage se fait par l'échange.
@@ -44,6 +44,83 @@
 				</form>
 			</div>
 		</section>
+
+		<section class="random-users">
+		
+			<ul class="random-users__list">
+				<h2>Trouvez les profils avec qui échanger !</h2>
+
+				<!-- TODO Utiliser les vraies données -->
+				<% const users = [
+					{ 
+							id: 1, 
+							firstname: "Jean", 
+							lastname: "Dupont", 
+							email: "jean.dupont@example.com", 
+							image: "/images/avatars/user1.jpg", 
+							location: "Paris",
+							skills: [
+									{ description: "Développement Web", category: { name: "Programmation" } },
+									{ description: "Développement Mobile", category: { name: "Programmation" } }
+							]
+					},
+					{ 
+							id: 2, 
+							firstname: "Marie", 
+							lastname: "Curie", 
+							email: "marie.curie@example.com", 
+							image: "/images/avatars/user2.jpg", 
+							location: "Lyon",
+							skills: [
+									{ description: "UI/UX Design", category: { name: "Design" } },
+									{ description: "Graphisme", category: { name: "Design" } }
+							]
+					},
+					{ 
+							id: 3, 
+							firstname: "Alice", 
+							lastname: "Martin", 
+							email: "alice.martin@example.com", 
+							image: "/images/avatars/user3.jpg", 
+							location: "Marseille",
+							skills: [
+									{ description: "SEO", category: { name: "Marketing" } },
+									{ description: "Publicité en ligne", category: { name: "Marketing" } }
+							]
+					},
+					{ 
+							id: 4, 
+							firstname: "Pierre", 
+							lastname: "Durand", 
+							email: "pierre.durand@example.com", 
+							image: "/images/avatars/user4.jpg", 
+							location: "Toulouse",
+							skills: [
+									{ description: "Gestion de projet Agile", category: { name: "Gestion de projet" } }
+							]
+					},
+					{ 
+							id: 5, 
+							firstname: "Claire", 
+							lastname: "Lefevre", 
+							email: "claire.lefevre@example.com", 
+							image: "/images/avatars/user5.jpg", 
+							location: "Nice",
+							skills: [
+									{ description: "Administration réseau", category: { name: "Réseaux" } }
+							]
+					}
+			]; %>
+
+				<% users.forEach(user => { %>
+					<li class="random-users__user">
+						<%- include('../inc/userCard', { user }) %>
+					</li>
+				<% }) %>
+				
+			</ul>
+		</section>
+		
 		
 	</main>
 	<%- include('../partials/footer') %>
