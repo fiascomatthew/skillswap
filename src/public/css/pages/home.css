@@ -1,3 +1,10 @@
+/* === Main === */
+.main {
+    background-color: var(--light-color);
+}
+
+/* === About Section === */
+
 .about {
     height: 80vh;
     padding: 0 10%;
@@ -12,8 +19,10 @@
     background-position: center;
 }
 
+/* === About Section Text === */
+
 .about__text {
-    max-width: 40vw;
+    max-width: 42rem;
 }
 
 .about__title {
@@ -32,15 +41,16 @@
     margin-bottom: 4rem;
 }
 
-/* === Search Bar === */
+/* === About Section Search Bar === */
 .about__search {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
     width: 100%;
-    max-width: 30vw;
-    position: relative;
+    max-width: 30rem;
 }
 
 .about__search-input {
@@ -52,8 +62,8 @@
 }
 
 .about__search-button {
-    cursor: pointer;
     position: absolute;
+    cursor: pointer;
     right: 0.5rem;
 
     background: var(--primary-color);
@@ -74,7 +84,7 @@
     font-size: 1rem;
 }
 
-/* === Responsive === */
+/* === About Section Responsive === */
 @media screen and (max-width: 720px) {
     .about {
         height: 70vh;
@@ -84,11 +94,42 @@
     }
 
     .about__text {
-        max-width: 90vw;
+        max-width: 20rem;
     }
 
     .about__search {
-        max-width: 80vw;
+        max-width: 20rem;
         margin: 0 auto;
     }
 }
+
+/* ======================================================================================================================== */
+
+
+/* === Random Users Section === */
+
+.random-users {
+    margin: 4rem 10%;
+}
+
+.random-users__title {
+    text-align: left;
+    color: var(--text-dark-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.random-users__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+
+/* Random Users Section Responsive */
+@media screen and (max-width: 720px) {
+    .random-users {
+        margin: 2rem 10%;
+    }
+  } 

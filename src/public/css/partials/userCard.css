@@ -1,0 +1,89 @@
+
+.user__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 20rem;
+  height: 25rem;
+
+  background: var(--lighter-color);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  border-radius: 0.7rem;
+  overflow: hidden;
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.user__profile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.user__avatar {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+
+  .user__profile:hover & {
+    opacity: 0.8;
+  }
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  
+  gap: 0.7rem;
+  margin: 0.5rem 0;
+  width: 85%;
+}
+
+.user__identity {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user__name {
+  color:var(--text-primary-color);
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  .user__profile:hover & {
+    text-decoration: underline;
+  }
+} 
+
+.user__location {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--text-neutral-color);
+}
+
+.user__skilled-in {
+  color: var(--text-dark-color);
+}
+
+.user__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.user__skill {
+  background-color: var(--darker-color);
+  color: var(--text-light-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.user__link {
+  padding: 0.8rem;
+}

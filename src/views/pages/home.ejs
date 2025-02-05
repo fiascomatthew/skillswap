@@ -10,6 +10,7 @@
 
 	<!-- Style -->
 	<link rel="stylesheet" href="/css/pages/home.css">
+	<link rel="stylesheet" href="/css/partials/userCard.css">
 </head>
 
 <body>
@@ -47,9 +48,9 @@
 
 		<section class="random-users">
 		
-			<ul class="random-users__list">
-				<h2>Trouvez les profils avec qui échanger !</h2>
+			<h2 class="random-users__title">Trouvez des profils avec qui échanger !</h2>
 
+			<ul class="random-users__list">
 				<!-- TODO Utiliser les vraies données -->
 				<% const users = [
 					{ 
@@ -57,11 +58,12 @@
 							firstname: "Jean", 
 							lastname: "Dupont", 
 							email: "jean.dupont@example.com", 
-							image: "/images/avatars/user1.jpg", 
+							image: "v3_0024421",
 							location: "Paris",
 							skills: [
 									{ description: "Développement Web", category: { name: "Programmation" } },
-									{ description: "Développement Mobile", category: { name: "Programmation" } }
+									{ description: "Développement Mobile", category: { name: "Programmation" } },
+									{ description: "Cuisine japonaise", category: { name: "Programmation" } }
 							]
 					},
 					{ 
@@ -69,11 +71,12 @@
 							firstname: "Marie", 
 							lastname: "Curie", 
 							email: "marie.curie@example.com", 
-							image: "/images/avatars/user2.jpg", 
+							image: null,
 							location: "Lyon",
 							skills: [
 									{ description: "UI/UX Design", category: { name: "Design" } },
-									{ description: "Graphisme", category: { name: "Design" } }
+									{ description: "Graphisme", category: { name: "Design" } },
+									{ description: "Yoga", category: { name: "Design" } }
 							]
 					},
 					{ 
@@ -81,7 +84,7 @@
 							firstname: "Alice", 
 							lastname: "Martin", 
 							email: "alice.martin@example.com", 
-							image: "/images/avatars/user3.jpg", 
+							image: "v3_0662181",
 							location: "Marseille",
 							skills: [
 									{ description: "SEO", category: { name: "Marketing" } },
@@ -92,11 +95,13 @@
 							id: 4, 
 							firstname: "Pierre", 
 							lastname: "Durand", 
-							email: "pierre.durand@example.com", 
-							image: "/images/avatars/user4.jpg", 
+							email: "pierre.durand@example.com",
+							image: null,
 							location: "Toulouse",
 							skills: [
-									{ description: "Gestion de projet Agile", category: { name: "Gestion de projet" } }
+									{ description: "Gestion de projet Agile", category: { name: "Gestion de projet" } },
+									{ description: "Guitare", category: { name: "Musique" } },
+									{ description: "Escalade", category: { name: "Sport" } }
 							]
 					},
 					{ 
@@ -104,10 +109,46 @@
 							firstname: "Claire", 
 							lastname: "Lefevre", 
 							email: "claire.lefevre@example.com", 
-							image: "/images/avatars/user5.jpg", 
+							image: "v3_0776176",
 							location: "Nice",
 							skills: [
 									{ description: "Administration réseau", category: { name: "Réseaux" } }
+							]
+					},
+					{ 
+							id: 6, 
+							firstname: "Claire", 
+							lastname: "Lefevre", 
+							email: "claire.lefevre@example.com", 
+							image: null,
+							location: "Nice",
+							skills: [
+									{ description: "Plongée", category: { name: "Réseaux" } },
+									{ description: "Cuisine italienne", category: { name: "Cuisine" } }
+							]
+					},
+					{ 
+							id: 7, 
+							firstname: "Pierre", 
+							lastname: "Durand", 
+							email: "pierre.durand@example.com", 
+							image: null,
+							location: "Toulouse",
+							skills: [
+									{ description: "Gestion de projet Agile", category: { name: "Gestion de projet" } },
+									{ description: "Piano", category: { name: "Musique" } }
+							]
+					},
+					{ 
+							id: 8, 
+							firstname: "Jean", 
+							lastname: "Dupont", 
+							email: "jean.dupont@example.com", 
+							image: null,
+							location: "Paris",
+							skills: [
+									{ description: "Développement Web", category: { name: "Programmation" } },
+									{ description: "Développement Mobile", category: { name: "Programmation" } }
 							]
 					}
 			]; %>
