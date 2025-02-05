@@ -1,13 +1,82 @@
-.about {
-    height: 100vh;
 
+
+.about {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10%;
+    
+    background-image: linear-gradient(rgba(47, 47, 149, 0.7), rgba(47, 47, 149, 0.7)), 
+                      url("../../images/hands-cooking.png");
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light-color);
+}
+
+.about__content {
+    max-width: 600px;
+}
+
+.about__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.about__description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* === Search Bar === */
+.about__search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.about__search-input {
+    width: 100%;
+    padding: 12px 45px 12px 15px; /* Left padding for text, right for icon */
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+}
+
+.about__search-button {
+    position: absolute;
+    right: 10px;
+    background: var(--primary-color);
+    border: none;
+    color: var(--text-light-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/about2.png");
-    background-size: cover;
-    background-position: center;
-    
-    margin-bottom: 5rem;
+    cursor: pointer;
+}
+
+.about__search-button i {
+    font-size: 1rem;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 720px) {
+    .about {
+        height: 70vh;
+        justify-content: center;
+        text-align: center;
+        padding: 0 5%;
+    }
+
+    .about__content {
+        max-width: 100%;
+    }
 }
