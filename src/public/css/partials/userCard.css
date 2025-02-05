@@ -33,6 +33,8 @@
 }
 
 .user__info {
+  flex-grow: 1;
+
   display: flex;
   flex-direction: column;
   
@@ -66,13 +68,22 @@
   color: var(--text-neutral-color);
 }
 
+.user__skills-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .user__skilled-in {
   color: var(--text-dark-color);
+  margin-bottom: 0.7rem;
 }
 
 .user__skills {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
 }
 

@@ -14,12 +14,14 @@
           <p class="location__text"><%= user.location %></p>
         </div>
       </div>
-      <p class="user__skilled-in">Compétences:</p>
-      <ul class="user__skills">
-        <% user.skills.slice(0, 3).forEach(skill => { %>
-            <li class="user__skill"><%= skill.description %></li>
-        <% }) %>
-      </ul>
+      <div class="user__skills-container">
+        <p class="user__skilled-in">Compétences:</p>
+        <ul class="user__skills">
+          <% user.skills.slice(0, 3).forEach(skill => { %>
+              <li class="user__skill"><%= skill.description %></li>
+          <% }) %>
+        </ul>
+      </div>
     
   </article>
 </a>
