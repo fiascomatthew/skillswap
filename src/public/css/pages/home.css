@@ -1,66 +1,73 @@
-
-
 .about {
     height: 80vh;
+    padding: 0 10%;
+    color: var(--text-light-color);
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 10%;
     
-    background-image: linear-gradient(rgba(47, 47, 149, 0.7), rgba(47, 47, 149, 0.7)), 
-                      url("../../images/hands-cooking.png");
+    background-image: linear-gradient(rgba(47, 47, 149, 0.7), rgba(47, 47, 149, 0.7)), url("../../images/hands-cooking.png");
     background-size: cover;
     background-position: center;
-    color: var(--text-light-color);
 }
 
-.about__content {
-    max-width: 600px;
+.about__text {
+    max-width: 40vw;
 }
 
 .about__title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.title__span {
+    font-style: italic;
 }
 
 .about__description {
     font-size: 1.2rem;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 /* === Search Bar === */
 .about__search {
     display: flex;
     align-items: center;
+    justify-content: center;
+
     width: 100%;
-    max-width: 400px;
+    max-width: 30vw;
     position: relative;
 }
 
 .about__search-input {
     width: 100%;
-    padding: 12px 45px 12px 15px; /* Left padding for text, right for icon */
+    padding: 1rem 1rem 1rem 1.25rem;
     font-size: 1rem;
     border: none;
-    border-radius: 25px;
-    outline: none;
+    border-radius: 2rem;
 }
 
 .about__search-button {
+    cursor: pointer;
     position: absolute;
-    right: 10px;
+    right: 0.5rem;
+
     background: var(--primary-color);
-    border: none;
     color: var(--text-light-color);
-    width: 40px;
-    height: 40px;
+
+    width: 2.6rem;
+    height: 2.6rem;
+
+    border: none;
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 }
 
 .about__search-button i {
@@ -76,7 +83,12 @@
         padding: 0 5%;
     }
 
-    .about__content {
-        max-width: 100%;
+    .about__text {
+        max-width: 90vw;
+    }
+
+    .about__search {
+        max-width: 80vw;
+        margin: 0 auto;
     }
 }
