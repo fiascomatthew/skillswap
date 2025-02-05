@@ -3,6 +3,7 @@
 body {
   font-family: Roboto, sans-serif;
   color: var(--text-color);
+  background-color: var(--light-color);
 }
 
 /* ======== Header ======== */
@@ -12,6 +13,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  background-color: var(--lighter-color);
 }
 
 @media screen and (max-width: 720px) {
@@ -54,7 +56,7 @@ body {
 }
 
 .footer__logo img {
-  width: 150px;
+  width: 13rem;
 }
 
 .footer__description {
@@ -69,9 +71,8 @@ body {
 
 .footer__links {
   display: flex;
-  gap: 2rem;
   justify-content: center;
-  list-style: none;
+  gap: 2rem;
   padding: 0;
 }
 
@@ -80,13 +81,12 @@ body {
 }
 
 .footer__link {
-  text-decoration: none;
   color: var(--text-light-color);
   transition: color 0.3s ease;
 }
 
 .footer__link:hover {
-  color: var(--text-primary-color);
+  color: var(--text-neutral-color);
 }
 
 .footer__socials {
@@ -102,7 +102,7 @@ body {
 }
 
 .footer__social-link:hover {
-  color: var(--text-primary-color);
+  color: var(--text-neutral-color);
 }
 
 .footer__bottom {
