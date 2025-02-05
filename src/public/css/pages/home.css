@@ -63,7 +63,6 @@
 
 .about__search-button {
     position: absolute;
-    cursor: pointer;
     right: 0.5rem;
 
     background: var(--primary-color);
@@ -80,9 +79,17 @@
     justify-content: center;
 }
 
-.about__search-button i {
+.about__search-icon {
     font-size: 1rem;
 }
+
+.about__search-button:hover {
+    background-color: var(--primary-darker-color);
+    border-color: var(--primary-darker-color);
+  
+    transition: all 0.1s ease-in-out;
+  }
+  
 
 /* === About Section Responsive === */
 @media screen and (max-width: 720px) {
@@ -109,7 +116,8 @@
 /* === Random Users Section === */
 
 .random-users {
-    margin: 4rem 10%;
+    margin: 3rem 10%;
+    max-width: 1200px;
 }
 
 .random-users__title {
@@ -124,7 +132,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    justify-content: center;
 }
 
 /* Random Users Section Responsive */
