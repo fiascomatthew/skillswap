@@ -32,7 +32,13 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-size: 0.9rem;
 }
+
+.header__signup {
+  font-size: 0.9rem;
+}
+
 
 /* === Footer === */
 
