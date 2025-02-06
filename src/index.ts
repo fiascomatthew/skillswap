@@ -39,6 +39,10 @@ app.get("/privacy", (req: Request, res: Response) => {
   res.render("pages/privacy");
 });
 
+app.get("/gcu", (req: Request, res: Response) => {
+  res.render("pages/gcu");
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
