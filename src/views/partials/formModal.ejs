@@ -1,0 +1,35 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay">
+  <div class="modal__content">
+    <button class="modal__close-button"><i class="modal_close-icon fa-solid fa-xmark"></i></button>
+    <div class="modal__header">
+      <img class="modal__logo" src="/images/logo.png" alt="logo skillswap">
+      <h2 class="modal__title">S'inscrire</h2>
+      <p class="modal__subtitle">
+        Déjà membre ? 
+        <button class="modal__alt secondary-button">Se connecter</button>
+      </p>
+    </div>
+    <form class="modal__form" method="POST" action="/register">
+      <label for="firstName" class="modal__label">Prénom</label>
+      <input type="text" id="firstName" name="firstName" class="modal__input" required>
+      
+      <label for="lastName" class="modal__label">Nom</label>
+      <input type="text" id="lastName" name="lastName" class="modal__input" required>
+      
+      <label for="email" class="modal__label">Adresse e-mail</label>
+      <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com" required>
+      
+      <label for="password" class="modal__label">Mot de passe</label>
+      <input type="password" id="password" name="password" class="modal__input" placeholder="******" required>
+      
+      <label for="location" class="modal__label">Ville</label>
+      <div class="modal__location-input-wrapper">
+        <i class="modal__location-icon fa-solid fa-location-dot"></i>
+        <input type="text" id="location" name="location" class="modal__input modal__input--location" placeholder="Paris" required>
+      </div>
+      
+      <button type="submit" class="modal__submit-button call-to-action">S'inscrire</button>
+    </form>
+  </div>
+</div>

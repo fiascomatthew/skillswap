@@ -161,3 +161,9 @@ input,
 button {
   outline: 0;
 }
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
