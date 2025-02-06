@@ -13,7 +13,7 @@
 /* ======== Modal content ======== */
 .modal__content {
   background-color: var(--lighter-color);
-  padding: 3rem 5rem;
+  padding: 4rem 5rem;
   border-radius: 0.7rem;
   width: 100%;
   max-width: 31rem;
