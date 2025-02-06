@@ -1,0 +1,18 @@
+/* ==== Variables ==== */
+
+:root {
+  --primary-color: #FB5139;
+  --primary-darker-color: #fb5039b4;
+  --dark-color: #2F2F95;
+  --darker-color: #202068;
+  --alt-color: #2E63F2;
+  --light-color: #f8f8f8;
+  --lighter-color: #FFFFFF;
+
+  --text-color: #0D1117;
+  --text-primary-color: #FB5139;
+  --text-dark-color: #202068;
+  --text-alt-color: #2E63F2;
+  --text-neutral-color: #999999;
+  --text-light-color: #FFFFFF;
+}
