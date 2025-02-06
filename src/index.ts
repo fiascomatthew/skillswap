@@ -31,6 +31,14 @@ app.get("/contact", (req: Request, res: Response) => {
   res.render("pages/contact");
 });
 
+app.get("/terms", (req: Request, res: Response) => {
+  res.render("pages/terms");
+});
+
+app.get("/privacy", (req: Request, res: Response) => {
+  res.render("pages/privacy");
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
