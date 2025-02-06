@@ -24,6 +24,14 @@ app.use(notFound);
 
 app.use(errorHandler);
 
+app.get("/about", (req: Request, res: Response) => {
+  res.render("pages/about");
+});
+
+app.get("/contact", (req: Request, res: Response) => {
+  res.render("pages/contact");
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
