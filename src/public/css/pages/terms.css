@@ -1,3 +1,17 @@
+.about_banner {
+  height: 50vh;
+  padding: 0 10%;
+  color: var(--text-light-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  
+  background-image: linear-gradient(rgba(47, 47, 149, 0.7), rgba(47, 47, 149, 0.7)), url("../../images/hands-cooking.png");
+  background-size: cover;
+  background-position: center;
+}
+
 .about__terms {
   display: grid;
   grid-template-columns: 20% 60% 20%;
