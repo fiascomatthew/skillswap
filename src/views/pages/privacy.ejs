@@ -10,14 +10,54 @@
 
 	<!-- Style -->
 	<link rel="stylesheet" href="/css/pages/home.css">
-	<link rel="stylesheet" href="/css/partials/userCard.css">
+	<link rel="stylesheet" href="/css/pages/terms.css">
 </head>
 
 <body>
 	<%- include('../partials/header') %>
 
   <main class="main">
-		
+		<section class="about">
+			<div class="about__content">
+				<div class="about__text">
+					<h1 class="about__title">Politique de confidentialité de la Plateforme <span class="title__span">SKILLSWAP</span></h1>
+					<p class="about__description">
+						Toute utilisation de la Plateforme SwkillSwap est soumise au prealable a la prise de connaissance et à l'acceptation expresse de la politique de confidentialité.
+					</p>
+				</div>
+
+				<form class="about__search" action="/search" method="GET">
+					<label for="search-skills" class="about__search-label">
+						<span class="sr-only">Rechercher une compétence</span>
+					</label>
+					<input 
+						type="text" 
+						id="search-skills" 
+						name="query" 
+						class="about__search-input" 
+						placeholder="Que recherchez-vous ?" 
+						aria-label="Rechercher une compétence"
+					>
+					<button type="submit" class="about__search-button" aria-label="Rechercher">
+						<i class="about__search-icon fas fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="about__terms">
+			<div class="about__terms-content">
+				<h2>Protection des Données Personnelles</h2>
+
+				<p><span>Collecte de données :</span> Le site peut collecter des données personnelles (nom, email, informations de paiement) pour assurer son bon fonctionnement.</p>
+
+				<p><span>Utilisation :</span> Ces données sont exclusivement utilisées dans le cadre de la mise en relation et de l'amélioration des services.</p>
+
+				<p><span>Cookies :</span> Le site utilise des cookies pour améliorer l'expérience utilisateur et suivre les statistiques de navigation.</p>
+
+				<p><span>Droits des utilisateurs :</span> Conformément au Règlement Général sur la Protection des Données (RGPD), les utilisateurs disposent d'un droit d'accès, de modification et de suppression de leurs données personnelles en contactant [Adresse email de contact].</p>
+			</div>
+		</section>
   </main>
 
   <%- include('../partials/footer') %>

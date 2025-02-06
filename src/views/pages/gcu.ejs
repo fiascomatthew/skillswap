@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Common styles, scripts, and meta tags -->
+	<%- include('../partials/head') %>
+
+	<!-- Title -->
+	<title>Skillswap</title>
+
+	<!-- Style -->
+	<link rel="stylesheet" href="/css/pages/home.css">
+  <link rel="stylesheet" href="/css/pages/terms.css">
+</head>
+
+<body>
+	<%- include('../partials/header') %>
+
+  <main class="main">
+    <section class="about">
+			<div class="about__content">
+				<div class="about__text">
+					<h1 class="about__title">Conditions générales d'utilisation de la Plateforme <span class="title__span">SKILLSWAP</span></h1>
+					<p class="about__description">
+						Toute utilisation de la Plateforme SwkillSwap est soumise au prealable a la prise de connaissance et à l'acceptation expresse des présentes Conditions Générales d'Utilisation.
+					</p>
+				</div>
+
+        <form class="about__search" action="/search" method="GET">
+					<label for="search-skills" class="about__search-label">
+						<span class="sr-only">Rechercher une compétence</span>
+					</label>
+					<input 
+						type="text" 
+						id="search-skills" 
+						name="query" 
+						class="about__search-input" 
+						placeholder="Que recherchez-vous ?" 
+						aria-label="Rechercher une compétence"
+					>
+					<button type="submit" class="about__search-button" aria-label="Rechercher">
+						<i class="about__search-icon fas fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</section>
+    <div class="about__terms-content">
+		  <h2>Conditions Générales d'Utilisation (CGU)</h2>
+
+      <p><span>Accès au site :</span> L'accès au site est gratuit mais peut nécessiter une inscription pour accéder à certaines fonctionnalités.</p>
+
+      <p><span>Responsabilité :</span> L'éditeur du site ne saurait être tenu responsable des litiges entre les utilisateurs et les prestataires de services.</p>
+
+      <p><span>Contenu :</span> Les utilisateurs sont seuls responsables des informations publiées sur la plateforme.</p>
+
+      <p><span>Suppression de compte :</span> L'éditeur se réserve le droit de supprimer tout compte ne respectant pas les CGU.</p>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+	
+</body>
+
+</html>

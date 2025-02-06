@@ -10,7 +10,7 @@
 
 	<!-- Style -->
 	<link rel="stylesheet" href="/css/pages/home.css">
-	<link rel="stylesheet" href="/css/partials/userCard.css">
+	<link rel="stylesheet" href="/css/pages/terms.css">
 </head>
 
 <body>
@@ -20,12 +20,39 @@
 		<section class="about">
 			<div class="about__content">
 				<div class="about__text">
-					<h1 class="about__title">Échangez, apprenez, <span class="title__span">évoluez</span></h1>
+					<h1 class="about__title">Qui sommes nous ?</h1>
 					<p class="about__description">
 						SkillSwap est une plateforme qui met en relation des particuliers souhaitant partager et apprendre 
 						de nouvelles compétences. Rejoignez une communauté dynamique où l'apprentissage se fait par l'échange.
 					</p>
 				</div>
+
+        <form class="about__search" action="/search" method="GET">
+					<label for="search-skills" class="about__search-label">
+						<span class="sr-only">Rechercher une compétence</span>
+					</label>
+					<input 
+						type="text" 
+						id="search-skills" 
+						name="query" 
+						class="about__search-input" 
+						placeholder="Que recherchez-vous ?" 
+						aria-label="Rechercher une compétence"
+					>
+					<button type="submit" class="about__search-button" aria-label="Rechercher">
+						<i class="about__search-icon fas fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</section>
+
+    <section class="about__terms">
+      <div class="about__terms-content">
+        <h2 class="about__title">Notre Mission</h2>
+        <p class="about__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus pulvinar diam, non placerat felis. Cras condimentum massa vitae lacus venenatis, in fermentum ex fringilla. Cras pretium tincidunt quam. Integer quis odio turpis. Nullam mollis ornare metus. Aenean interdum varius orci, sit amet vehicula mi consequat eget. Nulla facilisi. Vestibulum iaculis dignissim vulputate. Nunc non tempor turpis. Morbi ac vehicula massa, eu pellentesque orci. Morbi sit amet tincidunt turpis. Cras justo arcu, pellentesque ut nulla nec, hendrerit consequat nunc. Integer in odio ornare, commodo felis ac, imperdiet nunc. Nullam gravida sapien nunc. Phasellus hendrerit dui quis lectus tempor, vel tincidunt diam varius.
+        </p>
+    </section>
   </main>
 
   <%- include('../partials/footer') %>
