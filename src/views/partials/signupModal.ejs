@@ -1,5 +1,5 @@
 <!-- Modal Overlay -->
-<div class="modal modal--overlay">
+<div class="modal modal--overlay" id="signupModal">
   <div class="modal__content">
     <button class="modal__close-button"><i class="modal_close-icon fa-solid fa-xmark"></i></button>
     <div class="modal__header">
@@ -28,7 +28,14 @@
         <i class="modal__location-icon fa-solid fa-location-dot"></i>
         <input type="text" id="location" name="location" class="modal__input modal__input--location" placeholder="Paris" required>
       </div>
-      
+
+      <div class="modal__terms">
+        <input type="checkbox" id="terms" name="terms" class="modal__checkbox" required>
+        <label for="terms" class="modal__label--checkbox">
+          J'accepte les <a href="/terms-and-conditions" target="_blank" class="app-link">conditions d'utilisation</a>
+        </label>
+      </div>
+
       <button type="submit" class="modal__submit-button call-to-action">S'inscrire</button>
     </form>
   </div>

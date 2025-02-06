@@ -1,20 +1,59 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', () => {
-  // Open the modal
-  document.querySelector('.header__signup').addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent the default button behavior
-    document.querySelector('.modal--overlay').style.display = 'block';
+
+  // Function to open a modal
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+  }
+
+  // Function to close a modal
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // LOGIN MODAL
+  document.querySelector('.header__login').addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal('loginModal');
   });
 
-  // Close the modal
-  document.querySelector('.modal__close-button').addEventListener('click', () => {
-    document.querySelector('.modal--overlay').style.display = 'none';
+  document.querySelector('#loginModal .modal__close-button').addEventListener('click', () => {
+    closeModal('loginModal');
   });
 
-  // Close the modal by clicking outside of it
-  document.querySelector('.modal--overlay').addEventListener('click', function(e) {
+  document.getElementById('loginModal').addEventListener('click', function(e) {
     if (e.target === this) {
-      this.style.display = 'none';
+      closeModal('loginModal');
     }
   });
+
+  // SIGNUP MODAL
+  document.querySelector('.header__signup').addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal('signupModal');
+  });
+
+  document.querySelector('#signupModal .modal__close-button').addEventListener('click', () => {
+    closeModal('signupModal');
+  });
+
+  document.getElementById('signupModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal('signupModal');
+    }
+  });
+
+  // SWITCH BETWEEN LOGIN & SIGNUP MODALS
+  document.querySelector('#loginModal .modal__alt').addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal('loginModal');
+    openModal('signupModal');
+  });
+
+  document.querySelector('#signupModal .modal__alt').addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal('signupModal');
+    openModal('loginModal');
+  });
+
 });

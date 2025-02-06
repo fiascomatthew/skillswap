@@ -5,7 +5,7 @@
 
   text-align: center;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   color: var(--text-light-color);
   background-color: var(--dark-color);
@@ -26,7 +26,7 @@
 .secondary-button {
   color: var(--text-dark-color);
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .secondary-button:hover {
@@ -41,11 +41,26 @@
   width: 100%;
   padding: 0.7rem;
   background-color: var(--primary-color);
-  color: white;
+  font-weight: bold;
+  color: var(--text-light-color);
   border: none;
   border-radius: 0.5rem;
+  font-size: 1rem;
 }
 
 .call-to-action:hover {
   background-color: var(--primary-darker-color);
+}
+
+/* === Links === */
+
+.app-link {
+  color: var(--text-dark-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.app-link:hover {
+  color: var(--text-alt-color);
+  transition: all 0.1s ease-in-out;
 }
