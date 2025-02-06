@@ -3,7 +3,36 @@
     <img class="header__logo-img" src="/images/logo.png" alt="logo skillswap">
   </a>
   <div class="header__signup-login">
-    <a class="header__login secondary-button" href="/login">Se connecter</a>
-    <a class="header__signup primary-button" href="/register">S'inscrire</a>
+    <button class="header__login secondary-button">Se connecter</button>
+    <button class="header__signup primary-button">S'inscrire</button>
   </div>
 </header>
+
+</div>
+<!-- Modal Overlay -->
+<div class="modal modal--overlay">
+  <div class="modal__content">
+    <button class="modal__close-button">&times;</button>
+    <h2 class="modal__title">S'inscrire</h2>
+    <form class="modal__form">
+      <label for="firstName" class="modal__label">Prénom</label>
+      <input type="text" id="firstName" name="firstName" class="modal__input" placeholder="John" required>
+      
+      <label for="lastName" class="modal__label">Nom</label>
+      <input type="text" id="lastName" name="lastName" class="modal__input" placeholder="Doe" required>
+      
+      <label for="email" class="modal__label">Adresse e-mail</label>
+      <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com" required>
+      
+      <label for="password" class="modal__label">Mot de passe</label>
+      <input type="password" id="password" name="password" class="modal__input" placeholder="******" required>
+      
+      <label for="location" class="modal__label">Ville</label>
+      <div class="modal__location-input-wrapper">
+        <input type="text" id="location" name="location" class="modal__input" placeholder="Paris" required>
+        <span class="modal__location-icon">&#x1F4CD;</span> <!-- Location icon -->
+      </div>
+      
+      <button type="submit" class="modal__submit-button">S'inscrire</button>
+    </form>
+  </div>
