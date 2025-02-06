@@ -28,14 +28,14 @@ body {
   height: 2.5rem;
 }
 
-.header__signup-login {
+.header__register-login {
   display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 0.9rem;
 }
 
-.header__signup {
+.header__register {
   font-size: 0.9rem;
 }
 

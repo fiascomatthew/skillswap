@@ -26,32 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // SIGNUP MODAL
-  document.querySelector('.header__signup').addEventListener('click', (e) => {
+  // REGISTER MODAL
+  document.querySelector('.header__register').addEventListener('click', (e) => {
     e.preventDefault();
-    openModal('signupModal');
+    openModal('registerModal');
   });
 
-  document.querySelector('#signupModal .modal__close-button').addEventListener('click', () => {
-    closeModal('signupModal');
+  document.querySelector('#registerModal .modal__close-button').addEventListener('click', () => {
+    closeModal('registerModal');
   });
 
-  document.getElementById('signupModal').addEventListener('click', function (e) {
+  document.getElementById('registerModal').addEventListener('click', (e) => {
     if (e.target === this) {
-      closeModal('signupModal');
+      closeModal('registerModal');
     }
   });
 
-  // SWITCH BETWEEN LOGIN & SIGNUP MODALS
+  // SWITCH BETWEEN LOGIN & register MODALS
   document.querySelector('#loginModal .modal__alt').addEventListener('click', (e) => {
     e.preventDefault();
     closeModal('loginModal');
-    openModal('signupModal');
+    openModal('registerModal');
   });
 
-  document.querySelector('#signupModal .modal__alt').addEventListener('click', (e) => {
+  document.querySelector('#registerModal .modal__alt').addEventListener('click', (e) => {
     e.preventDefault();
-    closeModal('signupModal');
+    closeModal('registerModal');
     openModal('loginModal');
   });
 });
