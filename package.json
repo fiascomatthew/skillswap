@@ -13,7 +13,9 @@
     "express-session": "^1.18.1",
     "helmet": "^8.0.0",
     "pg": "^8.13.1",
-    "sequelize": "^6.37.5"
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -22,6 +24,7 @@
     "@types/express-session": "^1.18.1",
     "@types/node": "^22.13.0",
     "@types/sequelize": "^4.28.20",
+    "@types/validator": "^13.12.2",
     "biome": "^0.2.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
