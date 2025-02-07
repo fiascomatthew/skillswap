@@ -7,10 +7,10 @@ import {
   Unique,
   Validate,
   Default,
-} from "sequelize-typescript";
+} from 'sequelize-typescript';
 
 @Table({
-  tableName: "user_has_interest",
+  tableName: 'user_has_interest',
 })
 export class UserInterest extends Model<UserInterest> {
   @Column(DataType.TINYINT)

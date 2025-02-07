@@ -1,6 +1,5 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', () => {
-
   // Function to open a modal
   function openModal(modalId) {
     document.getElementById(modalId).style.display = 'block';
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal('loginModal');
   });
 
-  document.getElementById('loginModal').addEventListener('click', function(e) {
+  document.getElementById('loginModal').addEventListener('click', function (e) {
     if (e.target === this) {
       closeModal('loginModal');
     }
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal('signupModal');
   });
 
-  document.getElementById('signupModal').addEventListener('click', function(e) {
+  document.getElementById('signupModal').addEventListener('click', function (e) {
     if (e.target === this) {
       closeModal('signupModal');
     }
@@ -55,5 +54,4 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal('signupModal');
     openModal('loginModal');
   });
-
 });

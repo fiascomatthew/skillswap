@@ -1,9 +1,9 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import router  from './routers/router';
-import notFound  from './middlewares/notFound';
-import errorHandler  from './middlewares/errorHandler';
+import router from './routers/router';
+import notFound from './middlewares/notFound';
+import errorHandler from './middlewares/errorHandler';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,14 +12,14 @@ const app: Express = express();
 const port = 3000;
 
 // Configure view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Configure assets routes (static folder)
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Favicon static route
-app.use("/favicon.ico", express.static(path.join(__dirname, "public", "images", "logo.png")));
+app.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'images', 'logo.png')));
 
 app.use(router);
 

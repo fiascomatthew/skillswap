@@ -1,36 +1,36 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .error__title {
-  font-size: 3rem;
-  color: var(--text-dark-color);
-  margin: 2rem 0;
+	font-size: 3rem;
+	color: var(--text-dark-color);
+	margin: 2rem 0;
 }
 
 .error__message {
-  color: var(--text-neutral-color);
-  margin-bottom: 2rem;
+	color: var(--text-neutral-color);
+	margin-bottom: 2rem;
 }
 
 .error__image {
-  width: 20rem;
-  height: auto;
-  margin-bottom: 4rem;
+	width: 20rem;
+	height: auto;
+	margin-bottom: 4rem;
 }
 
 .error__return-to-home {
-  margin-bottom: 3rem;
+	margin-bottom: 3rem;
 }
 
 /* === Error Responsive === */
 @media screen and (max-width: 720px) {
-  .error__image {
-    width: 14rem;
-    height: auto;
-    margin-bottom: 3rem;
-  }
+	.error__image {
+		width: 14rem;
+		height: auto;
+		margin-bottom: 3rem;
+	}
 }

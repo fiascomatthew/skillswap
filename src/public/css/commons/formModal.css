@@ -21,11 +21,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   box-sizing: border-box;
 }
 
-.modal__close-button  {
+.modal__close-button {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -120,6 +120,6 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: 0;
-    padding: 2rem; 
+    padding: 2rem;
   }
 }

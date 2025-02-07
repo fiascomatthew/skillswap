@@ -1,7 +1,7 @@
-import { Model, Table, Column, DataType, Unique } from "sequelize-typescript";
+import { Model, Table, Column, DataType, Unique } from 'sequelize-typescript';
 
 @Table({
-  tableName: "category",
+  tableName: 'category',
 })
 export class CategoryModel extends Model {
   @Unique(true)
