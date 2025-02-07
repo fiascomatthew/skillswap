@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Common styles, scripts, and meta tags -->
+	<%- include('../partials/head') %>
+
+	<!-- Title -->
+	<title>Erreur</title>
+
+	<!-- Style -->
+	<link rel="stylesheet" href="/css/pages/error.css">
+</head>
+
+<body>
+	<%- include('../partials/header') %>
+
+	<main class="main">
+		<h1 class="error__title">Oups</h1>
+		<p class="error__message"><%= message %></p>
+		<img src="/images/error.png" alt="Page non trouvée" class="error__image">
+    <a href="/" class="error__return-to-home primary-button">Retourner à la page d'accueil</a>
+	</main>
+
+	<%- include('../partials/footer') %>
+	
+</body>
+
+</html>
