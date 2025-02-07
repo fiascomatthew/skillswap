@@ -25,7 +25,7 @@ body {
 
 .header__logo-img {
   width: auto;
-  height: 2.5rem; 
+  height: 2.5rem;
 }
 
 .header__signup-login {
@@ -38,7 +38,6 @@ body {
 .header__signup {
   font-size: 0.9rem;
 }
-
 
 /* === Footer === */
 
@@ -121,5 +120,5 @@ body {
 
 .footer__copyright {
   font-size: 0.9rem;
-  color: var(--text-neutral-color); 
+  color: var(--text-neutral-color);
 }

@@ -5,10 +5,10 @@ import {
   DataType,
   AllowNull,
   Unique,
-} from "sequelize-typescript";
+} from 'sequelize-typescript';
 
 @Table({
-  tableName: "skill",
+  tableName: 'skill',
 })
 export class SkillModel extends Model {
   @Column(DataType.TEXT)

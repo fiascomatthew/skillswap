@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize-typescript";
+import { Sequelize } from 'sequelize-typescript';
 import {
   User,
   Category,
@@ -8,13 +8,13 @@ import {
   Message,
   UserSkill,
   UserInterest,
-} from "./index";
+} from './index';
 
 export const sequelize = new Sequelize(
   // TODO: url in ENV
-  "postgres://postgres:postgres@db:5432/postgres",
+  'postgres://postgres:postgres@db:5432/postgres',
   {
-    dialect: "postgres",
+    dialect: 'postgres',
     logging: true,
     models: [
       User,
@@ -28,18 +28,18 @@ export const sequelize = new Sequelize(
     ],
     define: {
       underscored: true,
-      createdAt: "created_at",
-      updatedAt: "updated_at",
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
     },
-  }
+  },
 );
 
 // test de la connexion à la base de données
 sequelize
   .authenticate()
   .then((): void => {
-    console.log("Connection has been established successfully.");
+    console.log('Connection has been established successfully.');
   })
   .catch((error: Error): void => {
-    console.error("Unable to connect to the database:", error);
+    console.error('Unable to connect to the database:', error);
   });

@@ -1,19 +1,19 @@
 /* ==== Variables ==== */
 
 :root {
-  --primary-color: #FB5139;
-  --primary-darker-color: #D9432E;
-  --dark-color: #2F2F95;
+  --primary-color: #fb5139;
+  --primary-darker-color: #d9432e;
+  --dark-color: #2f2f95;
   --darker-color: #202068;
-  --alt-color: #2E63F2;
+  --alt-color: #2e63f2;
   --grey-color: #c0c0c0;
   --light-color: #f8f8f8;
-  --lighter-color: #FFFFFF;
+  --lighter-color: #ffffff;
 
-  --text-color: #0D1117;
-  --text-primary-color: #FB5139;
+  --text-color: #0d1117;
+  --text-primary-color: #fb5139;
   --text-dark-color: #202068;
-  --text-alt-color: #2E63F2;
+  --text-alt-color: #2e63f2;
   --text-neutral-color: #999999;
-  --text-light-color: #FFFFFF;
+  --text-light-color: #ffffff;
 }

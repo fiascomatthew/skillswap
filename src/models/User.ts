@@ -6,10 +6,10 @@ import {
   AllowNull,
   Unique,
   Validate,
-} from "sequelize-typescript";
+} from 'sequelize-typescript';
 
 @Table({
-  tableName: "user",
+  tableName: 'user',
 })
 export class UserModel extends Model<UserModel> {
   @Validate({ notEmpty: true })

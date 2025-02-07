@@ -1,7 +1,7 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import { Model, Table, Column, DataType } from 'sequelize-typescript';
 
 @Table({
-  tableName: "availability",
+  tableName: 'availability',
 })
 export class AvailabilityModel extends Model {
   @Column(DataType.DATEONLY)

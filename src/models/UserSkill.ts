@@ -7,10 +7,10 @@ import {
   Unique,
   Validate,
   Default,
-} from "sequelize-typescript";
+} from 'sequelize-typescript';
 
 @Table({
-  tableName: "user_has_skill",
+  tableName: 'user_has_skill',
 })
 export class UserSkill extends Model<UserSkill> {
   @Default(null)

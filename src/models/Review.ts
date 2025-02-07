@@ -5,10 +5,10 @@ import {
   DataType,
   AllowNull,
   Validate,
-} from "sequelize-typescript";
+} from 'sequelize-typescript';
 
 @Table({
-  tableName: "review",
+  tableName: 'review',
 })
 export class ReviewModel extends Model {
   @Validate({ min: 1, max: 5 })
