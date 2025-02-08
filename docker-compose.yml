@@ -9,6 +9,8 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    environment:
+      JWT_KEY: ${JWT_KEY}
     depends_on:
       - db
 

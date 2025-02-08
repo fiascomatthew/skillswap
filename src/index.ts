@@ -5,6 +5,9 @@ import router from './routers/router';
 import notFound from './middlewares/notFound';
 import errorHandler from './middlewares/errorHandler';
 import './models/sequelizeClient';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

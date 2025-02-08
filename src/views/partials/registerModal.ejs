@@ -10,31 +10,41 @@
         <button class="modal__alt secondary-button">Se connecter</button>
       </p>
     </div>
-    <form class="modal__form" method="POST" action="/register">
-      <label for="firstName" class="modal__label">Prénom</label>
-      <input type="text" id="firstName" name="firstName" class="modal__input" required>
+    <form class="modal__form" id="registerForm" method="POST" action="/register">
+      <label for="firstname" class="modal__label">Prénom</label>
+      <input type="text" id="firstname" name="firstname" class="modal__input">
+      <div class="modal__error" id="firstnameError">Prénom requis</div>
       
-      <label for="lastName" class="modal__label">Nom</label>
-      <input type="text" id="lastName" name="lastName" class="modal__input" required>
+      <label for="lastname" class="modal__label">Nom</label>
+      <input type="text" id="lastname" name="lastname" class="modal__input">
+      <div class="modal__error" id="lastnameError">Nom requis</div>
       
       <label for="email" class="modal__label">Adresse e-mail</label>
-      <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com" required>
+      <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com">
+      <div class="modal__error" id="emailError">Adresse e-mail requise</div>
       
       <label for="password" class="modal__label">Mot de passe</label>
-      <input type="password" id="password" name="password" class="modal__input" placeholder="******" required>
+      <input type="password" id="password" name="password" class="modal__input" placeholder="******">
+      <div class="modal__error" id="passwordError">Mot de passe requis</div>
+
+      <label for="confirmPassword" class="modal__label">Confirmer le mot de passe</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" class="modal__input" placeholder="******">
+      <div class="modal__error" id="confirmPasswordError">Confirmation de mot de passe requise</div>
       
       <label for="location" class="modal__label">Ville</label>
       <div class="modal__location-input-wrapper">
         <i class="modal__location-icon fa-solid fa-location-dot"></i>
-        <input type="text" id="location" name="location" class="modal__input modal__input--location" placeholder="Paris" required>
+        <input type="text" id="location" name="location" class="modal__input modal__input--location" placeholder="Paris">
       </div>
+      <div class="modal__error" id="locationError">Ville requise</div>
 
       <div class="modal__terms">
-        <input type="checkbox" id="terms" name="terms" class="modal__checkbox" required>
+        <input type="checkbox" id="terms" name="terms" class="modal__checkbox">
         <label for="terms" class="modal__label--checkbox">
           J'accepte les <a href="/terms-and-conditions" target="_blank" class="app-link">conditions d'utilisation</a>
         </label>
       </div>
+      <div class="modal__error" id="termsError">Vous devez accepter les conditions d'utilisation</div>
 
       <button type="submit" class="modal__submit-button call-to-action">S'inscrire</button>
     </form>

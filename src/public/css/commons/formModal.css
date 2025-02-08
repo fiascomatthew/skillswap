@@ -105,6 +105,13 @@
   height: 1rem;
 }
 
+.modal__error {
+  display: none;
+  color: red;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+
 .modal__submit-button {
   margin-top: 1.5rem;
 }

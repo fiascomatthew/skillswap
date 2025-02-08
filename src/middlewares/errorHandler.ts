@@ -12,6 +12,7 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
     }
   }
 
+  console.log('ERROR', err);
   res.status(statusCode).render('pages/error', { message });
 };
 

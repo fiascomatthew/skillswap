@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 
-function catchErrors(
+function catchError(
   controllerMethod: (req: Request, res: Response, next: NextFunction) => Promise<void>,
 ) {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -12,4 +12,4 @@ function catchErrors(
   };
 }
 
-export { catchErrors };
+export { catchError };
