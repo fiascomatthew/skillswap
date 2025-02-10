@@ -88,17 +88,17 @@
   margin-top: 0.2rem;
 }
 
-.modal__location-wrapper {
-  position: relative;
-}
-
 .modal__input--location {
   padding-left: 2rem;
 }
 
+.location__wrapper {
+  position: relative;
+}
+
 .modal__location-icon {
   position: absolute;
-  top: 54%;
+  top: 27%;
   left: 0.8rem;
   color: var(--text-neutral-color);
   font-size: 1rem;
