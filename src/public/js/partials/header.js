@@ -58,19 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // REGISTER FORM VALIDATION
 
   const form = document.getElementById('registerForm');
-  const modal = document.getElementById('registerModal');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent form submission
     let isValid = true;
 
-    // Reset previous errors only inside the registerModal
-    for (const error of modal.querySelectorAll('.modal__error')) {
+    // Reset previous errors only inside the registerForm
+    for (const error of form.querySelectorAll('.modal__error')) {
       error.style.display = 'none';
     }
 
-    // Validate inputs only inside the registerModal
-    for (const input of modal.querySelectorAll('.modal__input')) {
+    // Validate inputs only inside the registerForm
+    for (const input of form.querySelectorAll('.modal__input')) {
       const error = document.getElementById(`${input.id}Error`);
       if (!input.value) {
         error.style.display = 'block';
@@ -89,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check terms and conditions checkbox inside the registerModal
-    const terms = modal.querySelector('#terms');
+    const terms = form.querySelector('#terms');
     const termsError = document.getElementById('termsError');
     if (!terms.checked) {
       termsError.style.display = 'block';
@@ -98,6 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isValid) {
       form.submit(); // Submit form if valid
+    }
+  });
+
+  // LOGIN FORM VALIDATION
+
+  const loginForm = document.getElementById('loginForm');
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent form submission
+    let isValid = true;
+
+    // Reset previous errors only inside the loginForm
+    for (const error of loginForm.querySelectorAll('.modal__error')) {
+      error.style.display = 'none';
+    }
+
+    // Validate inputs only inside the loginForm
+    for (const input of loginForm.querySelectorAll('.modal__input')) {
+      const error = document.getElementById(`${input.id}Error`);
+      if (!input.value) {
+        error.style.display = 'block';
+        isValid = false;
+      }
+    }
+
+    if (isValid) {
+      loginForm.submit(); // Submit form if valid
     }
   });
 });
