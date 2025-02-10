@@ -6,4 +6,24 @@ router.get('/', (req: Request, res: Response) => {
   res.render('pages/home');
 });
 
+router.get('/about', (req: Request, res: Response) => {
+  res.render('pages/about');
+});
+
+router.get('/contact', (req: Request, res: Response) => {
+  res.render('pages/contact');
+});
+
+router.get('/terms', (req: Request, res: Response) => {
+  res.render('pages/terms');
+});
+
+router.get('/privacy', (req: Request, res: Response) => {
+  res.render('pages/privacy');
+});
+
+router.get('/gcu', (req: Request, res: Response) => {
+  res.render('pages/gcu');
+});
+
 export default router;

@@ -24,26 +24,6 @@ app.use(notFound);
 
 app.use(errorHandler);
 
-app.get("/about", (req: Request, res: Response) => {
-  res.render("pages/about");
-});
-
-app.get("/contact", (req: Request, res: Response) => {
-  res.render("pages/contact");
-});
-
-app.get("/terms", (req: Request, res: Response) => {
-  res.render("pages/terms");
-});
-
-app.get("/privacy", (req: Request, res: Response) => {
-  res.render("pages/privacy");
-});
-
-app.get("/gcu", (req: Request, res: Response) => {
-  res.render("pages/gcu");
-});
-
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
