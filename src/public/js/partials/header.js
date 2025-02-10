@@ -7,7 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to close a modal
   function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+
+    // Reset the form inside the modal
+    const form = modal.querySelector('form');
+    if (form) {
+      form.reset(); // Reset form fields
+    }
+
+    // Hide error messages after closing modal
+    const errorMessages = modal.querySelectorAll('.modal__error');
+    for (const error of errorMessages) {
+      error.style.display = 'none';
+    }
   }
 
   // LOGIN MODAL
