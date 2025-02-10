@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal('loginModal');
   });
 
-  document.getElementById('loginModal').addEventListener('click', function (e) {
-    if (e.target === this) {
+  document.getElementById('loginModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
       closeModal('loginModal');
     }
   });
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('registerModal').addEventListener('click', (e) => {
-    if (e.target === this) {
+    if (e.target === e.currentTarget) {
       closeModal('registerModal');
     }
   });
@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchingPasswordsError = document.getElementById('matchingPasswordsError');
 
     if (password && confirmPassword && password !== confirmPassword) {
-      console.log('COUCOU');
       matchingPasswordsError.style.display = 'block';
       isValid = false;
     }

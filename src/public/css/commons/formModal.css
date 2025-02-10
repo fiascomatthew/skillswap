@@ -57,6 +57,10 @@
   margin-bottom: 2.5rem;
 }
 
+.modal__wrapper {
+  margin-bottom: 1.2rem;
+}
+
 .modal__label {
   display: block;
   margin-bottom: 0.5rem;
@@ -65,7 +69,6 @@
 .modal__input {
   width: 100%;
   padding: 0.6rem;
-  margin-bottom: 1.2rem;
   border: 1px solid var(--grey-color);
   border-radius: 0.5rem;
   font-size: 1rem;
@@ -73,10 +76,17 @@
 
 .modal__input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(----dark-color);
 }
 
-.modal__location-input-wrapper {
+.modal__error {
+  display: none;
+  color: red;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.modal__location-wrapper {
   position: relative;
 }
 
@@ -86,9 +96,8 @@
 
 .modal__location-icon {
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 0.8rem;
-  transform: translateY(-100%);
   color: var(--text-neutral-color);
   font-size: 1rem;
 }
@@ -103,13 +112,6 @@
 .modal__checkbox {
   width: 1rem;
   height: 1rem;
-}
-
-.modal__error {
-  display: none;
-  color: red;
-  font-size: 0.7rem;
-  margin-top: 0.2rem;
 }
 
 .modal__submit-button {
