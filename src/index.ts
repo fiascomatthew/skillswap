@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import router from './routers/router';

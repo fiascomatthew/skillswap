@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // REGISTER FORM VALIDATION
 
   const form = document.getElementById('registerForm');
-
   const modal = document.getElementById('registerModal');
 
   form.addEventListener('submit', (event) => {
@@ -77,6 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
         error.style.display = 'block';
         isValid = false;
       }
+    }
+
+    // Check if passwords match
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const matchingPasswordsError = document.getElementById('matchingPasswordsError');
+
+    if (password && confirmPassword && password !== confirmPassword) {
+      console.log('COUCOU');
+      matchingPasswordsError.style.display = 'block';
+      isValid = false;
     }
 
     // Check terms and conditions checkbox inside the registerModal
