@@ -8,6 +8,10 @@ router.get('/', (req: Request, res: Response) => {
   res.render('pages/home');
 });
 
+router.post('/error', (req: Request, res: Response) => {
+  res.render('pages/error');
+});
+
 router.post('/login', catchError(authController.login));
 router.post('/register', catchError(authController.register));
 

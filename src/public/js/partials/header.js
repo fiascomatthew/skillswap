@@ -70,19 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // REGISTER FORM VALIDATION
 
-  const form = document.getElementById('registerForm');
+  const registerForm = document.getElementById('registerForm');
 
-  form.addEventListener('submit', (event) => {
+  registerForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission
     let isValid = true;
 
     // Reset previous errors only inside the registerForm
-    for (const error of form.querySelectorAll('.modal__error')) {
+    for (const error of registerForm.querySelectorAll('.modal__error')) {
       error.style.display = 'none';
     }
+    registerError.style.display = 'none';
 
     // Validate inputs only inside the registerForm
-    for (const input of form.querySelectorAll('.modal__input')) {
+    for (const input of registerForm.querySelectorAll('.modal__input')) {
       const error = document.getElementById(`${input.id}Error`);
       if (!input.value) {
         error.style.display = 'block';
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check terms and conditions checkbox inside the registerModal
-    const terms = form.querySelector('#terms');
+    const terms = registerForm.querySelector('#terms');
     const termsError = document.getElementById('termsError');
     if (!terms.checked) {
       termsError.style.display = 'block';
@@ -109,7 +110,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isValid) {
-      form.submit(); // Submit form if valid
+      const formData = new URLSearchParams(new FormData(registerForm));
+
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          // Display the general register error
+          registerError.style.display = 'block';
+        } else {
+          // Redirect on successful register
+          window.location.href = '/';
+        }
+      } catch (err) {
+        window.location.href = '/error';
+      }
     }
   });
 
@@ -117,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const loginForm = document.getElementById('loginForm');
 
-  loginForm.addEventListener('submit', (event) => {
+  loginForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission
     let isValid = true;
 
@@ -125,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const error of loginForm.querySelectorAll('.modal__error')) {
       error.style.display = 'none';
     }
+    loginError.style.display = 'none';
 
     // Validate inputs only inside the loginForm
     for (const input of loginForm.querySelectorAll('.modal__input')) {
@@ -136,7 +160,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isValid) {
-      loginForm.submit(); // Submit form if valid
+      const formData = new URLSearchParams(new FormData(loginForm));
+
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          // Display the general login error
+          loginError.style.display = 'block';
+        } else {
+          // Redirect on successful login
+          window.location.href = '/';
+        }
+      } catch (err) {
+        window.location.href = '/error';
+      }
     }
   });
 });

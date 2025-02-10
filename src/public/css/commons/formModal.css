@@ -85,7 +85,7 @@
   display: none;
   color: red;
   font-size: 0.7rem;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 .modal__input--location {
@@ -118,6 +118,14 @@
 
 .modal__submit-button {
   margin-top: 1.5rem;
+}
+
+.modal__global-error {
+  display: none;
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.4rem;
 }
 
 /* ======== Responsive ======== */
