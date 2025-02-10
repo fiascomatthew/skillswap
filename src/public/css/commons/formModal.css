@@ -17,6 +17,8 @@
   border-radius: 0.7rem;
   width: 100%;
   max-width: 31rem;
+  max-height: 90vh;
+  overflow-y: auto;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -119,7 +121,7 @@
 }
 
 /* ======== Responsive ======== */
-@media (max-width: 720px) {
+@media (max-width: 500px) {
   .modal__content {
     top: 0;
     left: 0;
@@ -127,6 +129,8 @@
     margin: 0;
     height: 100%;
     width: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
     box-sizing: border-box;
     border-radius: 0;
     padding: 2rem;
