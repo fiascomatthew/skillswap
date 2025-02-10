@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const error of errorMessages) {
       error.style.display = 'none';
     }
+    loginError.style.display = 'none';
+    registerError.style.display = 'none';
   }
 
   // LOGIN MODAL
@@ -123,13 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
+        if (data.violation) {
+          window.location.href = '/error';
+          return;
+        }
+
         if (data.error) {
           // Display the general register error
           registerError.style.display = 'block';
-        } else {
-          // Redirect on successful register
-          window.location.href = '/';
+          return;
         }
+
+        // Redirect on successful register
+        window.location.href = '/';
       } catch (err) {
         window.location.href = '/error';
       }
@@ -173,13 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
+        if (data.violation) {
+          window.location.href = '/error';
+          return;
+        }
+
         if (data.error) {
           // Display the general login error
           loginError.style.display = 'block';
-        } else {
-          // Redirect on successful login
-          window.location.href = '/';
+          return;
         }
+
+        // Redirect on successful login
+        window.location.href = '/';
       } catch (err) {
         window.location.href = '/error';
       }

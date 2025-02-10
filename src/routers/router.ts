@@ -8,8 +8,8 @@ router.get('/', (req: Request, res: Response) => {
   res.render('pages/home');
 });
 
-router.post('/error', (req: Request, res: Response) => {
-  res.render('pages/error');
+router.get('/error', (req: Request, res: Response) => {
+  res.render('pages/error', { message: 'Une erreur est survenue' });
 });
 
 router.post('/login', catchError(authController.login));
