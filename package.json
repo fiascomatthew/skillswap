@@ -20,6 +20,7 @@
     "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
@@ -27,7 +28,6 @@
     "@types/node": "^22.13.0",
     "@types/sequelize": "^4.28.20",
     "@types/validator": "^13.12.2",
-    "biome": "^0.3.3",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"

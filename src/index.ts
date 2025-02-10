@@ -22,11 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Configure assets routes (static folder)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configure body parser
 app.use(express.urlencoded({ extended: false }));
-
-// Favicon static route
-app.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'images', 'logo.png')));
 
 app.use(router);
 
