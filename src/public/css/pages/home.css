@@ -9,10 +9,8 @@
   align-items: center;
   justify-content: flex-start;
 
-  background-image: linear-gradient(
-      rgba(47, 47, 149, 0.7),
-      rgba(47, 47, 149, 0.7)
-    ), url("../../images/hands-cooking.png");
+  background-image: linear-gradient(rgba(47, 47, 149, 0.7), rgba(47, 47, 149, 0.7)),
+    url("../../images/hands-cooking.png");
   background-size: cover;
   background-position: center;
 }
@@ -134,5 +132,13 @@
 @media screen and (max-width: 720px) {
   .random-users {
     margin: 2rem 10%;
+  }
+}
+
+/* Footer responsive */
+@media screen and (max-width: 720px) {
+  .footer__links {
+    display: flex;
+    flex-direction: column;
   }
 }
