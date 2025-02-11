@@ -1,7 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import { User } from '../models';
 import bcrypt from 'bcrypt';
-import Joi from 'joi';
 import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
