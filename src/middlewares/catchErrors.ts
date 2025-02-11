@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 
-function catchError(
+function catchErrors(
   controllerMethod: (
     req: Request,
     res: Response,
@@ -16,4 +16,4 @@ function catchError(
   };
 }
 
-export { catchError };
+export { catchErrors };

@@ -10,7 +10,7 @@ import {
   UserInterest,
 } from './index';
 
-export const sequelize = new Sequelize(
+export const sequelizeClient= new Sequelize(
   // TODO: url in ENV
   'postgres://postgres:postgres@db:5432/postgres',
   {
@@ -35,7 +35,7 @@ export const sequelize = new Sequelize(
 );
 
 // test de la connexion à la base de données
-sequelize
+sequelizeClient
   .authenticate()
   .then((): void => {
     console.log('Connection has been established successfully.');

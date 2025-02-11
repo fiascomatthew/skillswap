@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Common styles, scripts, and meta tags -->
+    <%- include('../partials/head') %>
+
+    <!-- Title -->
+    <title>Skillswap</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/css/pages/searchResults.css" />
+    <link rel="stylesheet" href="/css/partials/userCard.css" />
+  </head>
+
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="main">
+      <section class="search-results">
+        <form class="search-results__search" action="/search" method="GET">
+          <label for="search-skills" class="search-results__search-label">
+            <span class="sr-only">Rechercher une compétence</span>
+          </label>
+          <input
+            type="text"
+            id="search-skills"
+            name="query"
+            class="search-results__search-input"
+            placeholder="Cuisine thaï, yoga, bricolage, ..."
+            aria-label="Rechercher une compétence"
+          />
+          <button
+            type="submit"
+            class="search-results__search-button"
+            aria-label="Rechercher"
+          >
+            <i class="search-results__search-icon fas fa-search"></i>
+          </button>
+        </form>
+        
+          <h1 class="search-results__title">
+            Résultats de la recherche pour la compétence "<%= query %>"
+          </h1>
+
+          <% if (users.length > 0) { %>
+            <ul class="search-results__list">
+              <% users.forEach(user => { %>
+                <li class="search-results__user">
+                  <%- include('../partials/userCard', { user }) %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p class="search-results__no-results">Aucun utilisateur trouvé pour cette compétence.</p>
+          <% } %>
+      </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
