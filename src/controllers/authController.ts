@@ -2,21 +2,7 @@ import type { NextFunction, Request, Response } from 'express';
 import { User } from '../models';
 import bcrypt from 'bcrypt';
 import Joi from 'joi';
-
-const loginSchema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-});
-
-const registerSchema = Joi.object({
-  firstname: Joi.string().required(),
-  lastname: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-  confirmPassword: Joi.string().required(),
-  location: Joi.string().required(),
-  terms: Joi.boolean().truthy('on').falsy('off').required(),
-});
+import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
   async login(req: Request, res: Response, next: NextFunction) {
