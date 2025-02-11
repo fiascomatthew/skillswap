@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import './models/sequelizeClient';
 import router from './routers/router';
 import notFound from './middlewares/notFound';
 import errorHandler from './middlewares/errorHandler';
