@@ -3,7 +3,7 @@ import HttpError from '../errors/HttpError';
 
 const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   let statusCode = 500;
-  let message = 'Something wrong happened';
+  let message = 'Un problème est survenu, veuillez réessayer plus tard.';
 
   if (err instanceof HttpError) {
     statusCode = err.statusCode;
@@ -12,6 +12,7 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
     }
   }
 
+  console.log('ERROR', err);
   res.status(statusCode).render('pages/error', { message });
 };
 

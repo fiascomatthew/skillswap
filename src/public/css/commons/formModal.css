@@ -17,6 +17,8 @@
   border-radius: 0.7rem;
   width: 100%;
   max-width: 31rem;
+  max-height: 100vh;
+  overflow-y: auto;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -57,6 +59,10 @@
   margin-bottom: 2.5rem;
 }
 
+.modal__wrapper {
+  margin-bottom: 1.2rem;
+}
+
 .modal__label {
   display: block;
   margin-bottom: 0.5rem;
@@ -65,7 +71,6 @@
 .modal__input {
   width: 100%;
   padding: 0.6rem;
-  margin-bottom: 1.2rem;
   border: 1px solid var(--grey-color);
   border-radius: 0.5rem;
   font-size: 1rem;
@@ -73,22 +78,28 @@
 
 .modal__input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(----dark-color);
 }
 
-.modal__location-input-wrapper {
-  position: relative;
+.modal__error {
+  display: none;
+  color: red;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
 }
 
 .modal__input--location {
   padding-left: 2rem;
 }
 
+.location__wrapper {
+  position: relative;
+}
+
 .modal__location-icon {
   position: absolute;
-  top: 50%;
+  top: 27%;
   left: 0.8rem;
-  transform: translateY(-100%);
   color: var(--text-neutral-color);
   font-size: 1rem;
 }
@@ -109,8 +120,16 @@
   margin-top: 1.5rem;
 }
 
+.modal__global-error {
+  display: none;
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
 /* ======== Responsive ======== */
-@media (max-width: 720px) {
+@media (max-width: 500px) {
   .modal__content {
     top: 0;
     left: 0;

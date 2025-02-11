@@ -10,13 +10,21 @@
         <button class="modal__alt secondary-button">S'inscrire</button>
       </p>
     </div>
-    <form class="modal__form" method="POST" action="/register">    
-      <label for="email" class="modal__label">Adresse e-mail</label>
-      <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com" required>
+    <form class="modal__form" id="loginForm" method="POST" action="/login">
+      <div class="modal__wrapper">
+        <label for="email" class="modal__label">Adresse e-mail</label>
+        <input type="email" id="loginEmail" name="email" class="modal__input" placeholder="name@example.com">
+        <p class="modal__error" id="loginEmailError">Adresse e-mail requise</p>
+      </div>
       
-      <label for="password" class="modal__label">Mot de passe</label>
-      <input type="password" id="password" name="password" class="modal__input" placeholder="******" required>
-      
+      <div class="modal__wrapper">
+        <label for="password" class="modal__label">Mot de passe</label>
+        <input type="password" id="loginPassword" name="password" class="modal__input" placeholder="********">
+        <p class="modal__error" id="loginPasswordError">Mot de passe requis</p>
+      </div>
+
+      <p class="modal__global-error" id="loginError"> Adresse e-mail ou mot de passe incorrect. Veuillez réessayer.</p>
+
       <button type="submit" class="modal__submit-button call-to-action">Se connecter</button>
     </form>
   </div>

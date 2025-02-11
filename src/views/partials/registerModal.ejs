@@ -1,0 +1,67 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="registerModal">
+  <div class="modal__content">
+    <button class="modal__close-button"><i class="modal_close-icon fa-solid fa-xmark"></i></button>
+    <div class="modal__header">
+      <img class="modal__logo" src="/images/logo.png" alt="logo skillswap">
+      <h2 class="modal__title">S'inscrire</h2>
+      <p class="modal__subtitle">
+        Déjà membre ? 
+        <button class="modal__alt secondary-button">Se connecter</button>
+      </p>
+    </div>
+    <form class="modal__form" id="registerForm" method="POST" action="/register">
+      <div class="modal__wrapper">
+        <label for="firstname" class="modal__label">Prénom</label>
+        <input type="text" id="firstname" name="firstname" class="modal__input">
+        <p class="modal__error" id="firstnameError">Prénom requis</p>
+      </div>
+      
+      <div class="modal__wrapper">
+        <label for="lastname" class="modal__label">Nom</label>
+        <input type="text" id="lastname" name="lastname" class="modal__input">
+        <p class="modal__error" id="lastnameError">Nom requis</p>
+      </div>
+      
+      <div class="modal__wrapper">
+        <label for="email" class="modal__label">Adresse e-mail</label>
+        <input type="email" id="email" name="email" class="modal__input" placeholder="name@example.com">
+        <p class="modal__error" id="emailError">Adresse e-mail requise</p>
+      </div>
+      
+      <div class="modal__wrapper">
+        <label for="password" class="modal__label">Mot de passe</label>
+        <input type="password" id="password" name="password" class="modal__input" placeholder="********">
+        <p class="modal__error" id="passwordError">Mot de passe requis</p>
+      </div>
+
+      <div class="modal__wrapper">
+        <label for="confirmPassword" class="modal__label">Confirmer le mot de passe</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="modal__input" placeholder="********">
+        <p class="modal__error" id="confirmPasswordError">Confirmation de mot de passe requise</p>
+        <p class="modal__error" id="matchingPasswordsError">Les mots de passe doivent correspondre</p>
+      </div>
+      
+      <div class="modal__wrapper modal__location-wrapper">
+        <label for="location" class="modal__label">Ville</label>
+        <div class="location__wrapper">
+          <i class="modal__location-icon fa-solid fa-location-dot"></i>
+          <input type="text" id="location" name="location" class="modal__input modal__input--location" placeholder="Paris">
+        </div>
+        <p class="modal__error" id="locationError">Ville requise</p>
+      </div>
+
+      <div class="modal__terms">
+        <input type="checkbox" id="terms" name="terms" class="modal__checkbox">
+        <label for="terms" class="modal__label--checkbox">
+          J'accepte les <a href="/terms-and-conditions" target="_blank" class="app-link">conditions d'utilisation</a>
+        </label>
+      </div>
+      <p class="modal__error" id="termsError">Vous devez accepter les conditions d'utilisation</p>
+
+      <p class="modal__global-error" id="registerError">Adresse e-mail déjà utilisée. Veuillez vous connecter.</p>
+
+      <button type="submit" class="modal__submit-button call-to-action">S'inscrire</button>
+    </form>
+  </div>
+</div>
