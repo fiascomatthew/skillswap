@@ -18,10 +18,6 @@ router.get('/terms', (req: Request, res: Response) => {
   res.render('pages/terms');
 });
 
-router.get('/privacy', (req: Request, res: Response) => {
-  res.render('pages/privacy');
-});
-
 router.get('/gcu', (req: Request, res: Response) => {
   res.render('pages/gcu');
 });
