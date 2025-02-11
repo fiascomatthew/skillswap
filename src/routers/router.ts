@@ -15,4 +15,20 @@ router.get('/error', (req: Request, res: Response) => {
   res.render('pages/error', { message: 'Une erreur est survenue' });
 });
 
+router.get('/about', (req: Request, res: Response) => {
+  res.render('pages/about');
+});
+
+router.get('/contact', (req: Request, res: Response) => {
+  res.render('pages/contact');
+});
+
+router.get('/terms', (req: Request, res: Response) => {
+  res.render('pages/terms');
+});
+
+router.get('/gcu', (req: Request, res: Response) => {
+  res.render('pages/gcu');
+});
+
 export default router;
