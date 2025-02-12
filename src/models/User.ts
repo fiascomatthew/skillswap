@@ -1,12 +1,4 @@
-import {
-  Model,
-  Table,
-  Column,
-  DataType,
-  AllowNull,
-  Unique,
-  Validate,
-} from 'sequelize-typescript';
+import { Model, Table, Column, DataType, AllowNull, Unique, Validate } from 'sequelize-typescript';
 
 @Table({
   tableName: 'user',
@@ -28,4 +20,6 @@ export class UserModel extends Model<UserModel> {
   image?: string;
   @Column(DataType.STRING(100))
   location!: string;
+  @Column(DataType.TEXT)
+  bio!: string;
 }
