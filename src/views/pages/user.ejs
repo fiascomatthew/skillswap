@@ -8,8 +8,10 @@
     <title> <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>. | Skillswap</title>
 
     <!-- Style -->
-    <link rel="stylesheet" href="/css/pages/home.css" />
-    <link rel="stylesheet" href="/css/partials/userCard.css" />
+    <link rel="stylesheet" href="/css/pages/user.css" />
+
+    <!-- Script -->
+    <script defer src="/js/pages/user.js"></script>
   </head>
 
   <body>
@@ -23,44 +25,47 @@
           
           <!-- User Main Info -->
           <section class="user__info">
-            <img src="<%= user.avatar %>" alt="Avatar de <%= user.firstname %>" class="user__avatar">
-            <h1 class="user__name"><%= user.firstname %></h1>
-            <p class="user__location">
-              <i class="fas fa-map-marker-alt"></i> <%= user.location %>
-            </p>
-            <div class="user__actions">
-              <button class="user__button user__button--follow">
-                <i class="fas fa-user-plus"></i> Suivre
-              </button>
-              <button class="user__button user__button--contact">
-                <i class="fas fa-envelope"></i> Contacter
-              </button>
+            <div class="user__avatar-container">
+              <img class="user__avatar" src="<%= user.image ? `/images/${user.image}.png` : '/images/avatar.png' %>" alt="Avatar de <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>.">
+            </div>
+
+            <div class="user__wrapper-identity-actions">
+              <div class="user__identity">
+                <h1 class="user__name"><%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>.</h1>
+                <div class="user__location">
+                  <i class="location__icon fa-solid fa-location-dot"></i>
+                  <p class="location__text"><%= user.location %></p>
+                </div>
+              </div>
+  
+              <div class="user__actions">
+                <button class="user__button--follow primary-button"> Suivre </button>
+                <button class="user__button--contact secondary-button"> Contacter </button>
+              </div>
             </div>
           </section>
     
           <!-- Skills List -->
-          <section class="user__skills">
-            <h2 class="user__subtitle">Compétences</h2>
-            <ul class="user__skills-list">
-              <% user.skills.forEach(skill => { %>
-                <li class="user__skill" data-skill="<%= skill.description %>">
-                  <button class="user__skill-button">
-                    <i class="fas fa-lightbulb"></i> <%= skill.name %>
-                  </button>
-                </li>
-              <% }); %>
+          <section class="user__subsection">
+            <h2 class="subsection__subtitle">Compétences</h2>
+            <ul class="subsection__list">
+              <% if (user.skills && user.skills.length > 0) { %>
+                <% user.skills.forEach(skill => { %>
+                  <li class="user__li"><%= skill.description %></li>
+                <% }); %>
+              <% } %>
             </ul>
           </section>
     
           <!-- Interests List -->
-          <section class="user__interests">
-            <h2 class="user__subtitle">Centres d'intérêt</h2>
-            <ul class="user__interests-list">
-              <% user.interests.forEach(interest => { %>
-                <li class="user__interest">
-                  <i class="fas fa-heart"></i> <%= interest %>
-                </li>
-              <% }); %>
+          <section class="user__subsection">
+            <h2 class="subsection__subtitle">Intérêts</h2>
+            <ul class="subsection__list">
+              <% if (user.interests && user.interests.length > 0) { %>
+                <% user.interests.forEach(interest => { %>
+                  <li class="user__li"><%= interest.description %></li>
+                <% }); %>
+              <% } %>
             </ul>
           </section>
     
@@ -68,51 +73,75 @@
     
         <!-- Second Section: Tabs for About, Availability, and Reviews -->
         <section class="user__content">
+
+          <!-- Nav -->
           <nav class="user__tabs">
             <button class="user__tab user__tab--active" data-tab="about">
-              <i class="fas fa-user"></i> A propos
+              <i class="tab__icon fas fa-user"></i>
+              <p class="tab__text">A propos</p>
             </button>
             <button class="user__tab" data-tab="availabilities">
-              <i class="fas fa-calendar-alt"></i> Disponibilités
+              <i class="tab__icon fas fa-calendar-alt"></i>
+              <p class="tab__text">Disponibilités</p>
             </button>
             <button class="user__tab" data-tab="reviews">
-              <i class="fas fa-comments"></i> Témoignages
+              <i class="tab__icon fas fa-comments"></i>
+              <p class="tab__text">Témoignages</p>
             </button>
           </nav>
     
-          <div class="user__tab-content user__tab-content--active" id="about">
-            <p><%= user.about %></p>
+          <!-- About Tab Content -->
+          <div class="user__tab-content user__tab-content--active" id="user-about">
+            <p class="user__about"><%= user.bio %></p>
           </div>
-          <div class="user__tab-content" id="availabilities">
-            <p><%= user.availabilities %></p>
-          </div>
-          <div class="user__tab-content" id="reviews">
-            <ul class="user__reviews-list">
-              <% user.reviews.forEach(review => { %>
-                <li class="user__review">
-                  <blockquote>
-                    <p><%= review.text %></p>
-                    <cite>- <%= review.author %></cite>
-                  </blockquote>
-                </li>
-              <% }); %>
+
+          <!-- Availabilities Tab Content -->
+          <div class="user__tab-content" id="user-availabilities">
+            <ul class="user__availabilities">
+              <% if (user.availabilities && user.availabilities.length > 0) { %>
+                <% user.availabilities.forEach(availability => { %>
+                  <li class="user__availability">
+                    <div class="availability__date">
+                      <i class="availability__icon fas fa-calendar-alt"></i>
+                      <p class="availability__day"><%= availability.date %></p>
+                    </div>
+                    <p class="availability__time-slot">De <%= availability.start_time %> à <%= availability.end_time %></p>
+                  </li>
+                <% }); %>
+              <% } %>
             </ul>
           </div>
-        </section>
-    
-      </div>
-    
-      <!-- Skill Description Modal -->
-      <div class="modal" id="skill-modal">
-        <div class="modal__content">
-          <span class="modal__close">&times;</span>
-          <p id="skill-description"></p>
-        </div>
-      </div>
-      <% user %>
-      <pre><%= JSON.stringify(user, null, 2) %></pre>
-    </main>
 
+          <!-- Reviews Tab Content -->
+          <div class="user__tab-content" id="user-reviews">
+            <ul class="user__reviews">
+              <% if (user.reviewsReceived && user.reviewsReceived.length > 0) { %>
+                <% user.reviewsReceived.forEach(review => { %>
+                  <li class="user__review">
+                    <div class="review__author">
+                      <img class="author__avatar" src="<%= review.reviewer.image ? `/images/${review.reviewer.image}.png` : '/images/avatar.png' %>" alt="Avatar de <%= review.reviewer.firstname.charAt(0).toUpperCase() + review.reviewer.firstname.slice(1) %> <%= review.reviewer.lastname.charAt(0).toUpperCase() %>.">
+                      <p class="author__identity">
+                        <%= review.reviewer.firstname.charAt(0).toUpperCase() + review.reviewer.firstname.slice(1) %> <%= review.reviewer.lastname.charAt(0).toUpperCase() %>.
+                      </p>
+                    </div>
+                    <div class="review__content">
+                      <p class="review__rating"><%= review.rating %> / 5</p>
+                      <p class="review__description"><%= review.review %></p>
+                    </div>
+                    <div class="review__date">
+                      <p>Laissé le: <%= new Date(review.created_at).toLocaleDateString() %></p>
+                    </div>
+                  </li>
+                <% }); %>
+              <% } else { %>
+                <p class="user__no-reviews">No reviews yet.</p>
+              <% } %>
+            </ul>
+          </div>
+
+        </section>
+      </div>
+    </main>
     <%- include('../partials/footer') %>
   </body>
 </html>

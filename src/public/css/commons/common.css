@@ -1,11 +1,11 @@
 /* === Primary button === */
 .primary-button {
   display: block;
-  padding: 0.8rem 1.2rem;
+  padding: 0.7rem 1.1rem;
 
   text-align: center;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   color: var(--text-light-color);
   background-color: var(--dark-color);
@@ -26,7 +26,7 @@
 .secondary-button {
   color: var(--text-dark-color);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .secondary-button:hover {
@@ -45,7 +45,7 @@
   color: var(--text-light-color);
   border: none;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .call-to-action:hover {

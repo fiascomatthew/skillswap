@@ -1,0 +1,257 @@
+/* === General Styles === */
+.user__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Separator line using CSS instead of HTML */
+.user__header::after,
+.user__content::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--darker-color);
+  opacity: 0.2;
+  margin-top: 1.5rem;
+}
+
+/* === User Header Section (Profile Info, Skills, Interests) === */
+.user__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* === User Avatar === */
+.user__avatar-container {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === User Identity (Name and Location) === */
+.user__wrapper-identity-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.user__identity {
+  text-align: center;
+}
+
+.user__name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary-color);
+}
+
+.user__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-neutral-color);
+}
+
+/* === User Actions (Follow & Contact Buttons) === */
+.user__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: scale(1.05);
+}
+
+/* === Skills and Interests Section === */
+.user__subsection {
+  text-align: center;
+  width: 100%;
+}
+
+.subsection__subtitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--text-dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.subsection__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.user__li {
+  background-color: var(--darker-color);
+  color: var(--text-light-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+}
+
+/* === Tabs Section (Navigation and Content) === */
+.user__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* === Tabs Navigation === */
+.user__tabs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.user__tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-primary-color);
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.user__tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.user__tab--active {
+  color: var(--blue-vif);
+  border-bottom: 3px solid var(--blue-vif);
+}
+
+/* === Tabs Content (About, Availability, Reviews) === */
+.user__tab-content {
+  display: none;
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.user__tab-content--active {
+  display: block;
+}
+
+/* === Availability List === */
+.user__availabilities {
+  list-style: none;
+  padding: 0;
+}
+
+.user__availability {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: var(--darker-color);
+  color: var(--text-light-color);
+  border-radius: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.availability__icon {
+  color: var(--blue-vif);
+}
+
+/* === Reviews List === */
+.user__reviews {
+  list-style: none;
+  padding: 0;
+}
+
+.user__review {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--lighter-color);
+  margin-bottom: 1rem;
+  box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.05);
+}
+
+.review__author {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.author__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.author__identity {
+  font-weight: bold;
+  color: var(--text-primary-color);
+}
+
+.review__rating {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--orange);
+}
+
+.review__description {
+  font-size: 0.9rem;
+  color: var(--text-dark-color);
+}
+
+.review__date {
+  font-size: 0.8rem;
+  color: var(--text-neutral-color);
+}
+
+/* === Responsive Design === */
+@media (min-width: 768px) {
+  .user__container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .user__header {
+    width: 40%;
+  }
+
+  .user__content {
+    width: 55%;
+  }
+
+  .user__tabs {
+    justify-content: center;
+    gap: 1rem;
+  }
+}

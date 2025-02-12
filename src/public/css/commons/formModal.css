@@ -13,7 +13,7 @@
 /* ======== Modal content ======== */
 .modal__content {
   background-color: var(--lighter-color);
-  padding: 4rem 5rem;
+  padding: 3.5rem 5rem;
   border-radius: 0.7rem;
   width: 100%;
   max-width: 31rem;
@@ -73,7 +73,7 @@
   padding: 0.6rem;
   border: 1px solid var(--grey-color);
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .modal__input:focus {
@@ -101,7 +101,7 @@
   top: 27%;
   left: 0.8rem;
   color: var(--text-neutral-color);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .modal__terms {

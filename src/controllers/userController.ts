@@ -7,7 +7,21 @@ export const userController = {
     const { id } = req.params;
 
     const user = await User.findByPk(id, {
-      include: [{ association: 'skills' }, { association: 'interests' }],
+      include: [
+        { association: 'skills' },
+        { association: 'interests' },
+        { association: 'availabilities' },
+        {
+          association: 'reviewsReceived',
+          include: [
+            {
+              model: User,
+              as: 'reviewer',
+              attributes: ['firstname', 'lastname'],
+            },
+          ],
+        },
+      ],
     });
 
     if (!user) {
