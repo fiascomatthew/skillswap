@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Common styles, scripts, and meta tags -->
+    <%- include('../partials/head') %>
+
+    <!-- Title -->
+    <title> <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>. | Skillswap</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/css/pages/home.css" />
+    <link rel="stylesheet" href="/css/partials/userCard.css" />
+  </head>
+
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="main">
+      <div class="user__container">
+    
+        <!-- First Section: User Info, Skills, and Interests -->
+        <section class="user__header">
+          
+          <!-- User Main Info -->
+          <section class="user__info">
+            <img src="<%= user.avatar %>" alt="Avatar de <%= user.firstname %>" class="user__avatar">
+            <h1 class="user__name"><%= user.firstname %></h1>
+            <p class="user__location">
+              <i class="fas fa-map-marker-alt"></i> <%= user.location %>
+            </p>
+            <div class="user__actions">
+              <button class="user__button user__button--follow">
+                <i class="fas fa-user-plus"></i> Suivre
+              </button>
+              <button class="user__button user__button--contact">
+                <i class="fas fa-envelope"></i> Contacter
+              </button>
+            </div>
+          </section>
+    
+          <!-- Skills List -->
+          <section class="user__skills">
+            <h2 class="user__subtitle">Compétences</h2>
+            <ul class="user__skills-list">
+              <% user.skills.forEach(skill => { %>
+                <li class="user__skill" data-skill="<%= skill.description %>">
+                  <button class="user__skill-button">
+                    <i class="fas fa-lightbulb"></i> <%= skill.name %>
+                  </button>
+                </li>
+              <% }); %>
+            </ul>
+          </section>
+    
+          <!-- Interests List -->
+          <section class="user__interests">
+            <h2 class="user__subtitle">Centres d'intérêt</h2>
+            <ul class="user__interests-list">
+              <% user.interests.forEach(interest => { %>
+                <li class="user__interest">
+                  <i class="fas fa-heart"></i> <%= interest %>
+                </li>
+              <% }); %>
+            </ul>
+          </section>
+    
+        </section>
+    
+        <!-- Second Section: Tabs for About, Availability, and Reviews -->
+        <section class="user__content">
+          <nav class="user__tabs">
+            <button class="user__tab user__tab--active" data-tab="about">
+              <i class="fas fa-user"></i> A propos
+            </button>
+            <button class="user__tab" data-tab="availabilities">
+              <i class="fas fa-calendar-alt"></i> Disponibilités
+            </button>
+            <button class="user__tab" data-tab="reviews">
+              <i class="fas fa-comments"></i> Témoignages
+            </button>
+          </nav>
+    
+          <div class="user__tab-content user__tab-content--active" id="about">
+            <p><%= user.about %></p>
+          </div>
+          <div class="user__tab-content" id="availabilities">
+            <p><%= user.availabilities %></p>
+          </div>
+          <div class="user__tab-content" id="reviews">
+            <ul class="user__reviews-list">
+              <% user.reviews.forEach(review => { %>
+                <li class="user__review">
+                  <blockquote>
+                    <p><%= review.text %></p>
+                    <cite>- <%= review.author %></cite>
+                  </blockquote>
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+        </section>
+    
+      </div>
+    
+      <!-- Skill Description Modal -->
+      <div class="modal" id="skill-modal">
+        <div class="modal__content">
+          <span class="modal__close">&times;</span>
+          <p id="skill-description"></p>
+        </div>
+      </div>
+      <% user %>
+      <pre><%= JSON.stringify(user, null, 2) %></pre>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
