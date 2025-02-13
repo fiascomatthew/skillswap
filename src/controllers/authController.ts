@@ -4,6 +4,22 @@ import bcrypt from 'bcrypt';
 import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
+  getLoginPage(req: Request, res: Response) {
+    if (req.session?.connectedUser) {
+      return res.redirect('/register');
+    }
+
+    res.render('pages/login');
+  },
+
+  getRegisterPage(req: Request, res: Response) {
+    if (req.session?.connectedUser) {
+      return res.redirect('/');
+    }
+
+    res.render('pages/register');
+  },
+
   async login(req: Request, res: Response) {
     const {
       value: { email, password },
@@ -33,6 +49,13 @@ export const authController = {
         message: 'Adresse e-mail ou mot de passe incorrect.',
       });
     }
+
+    // Store user details in session
+    req.session.connectedUser = {
+      id: user.id,
+      firstname: user.firstname,
+      image: user.image,
+    };
 
     return res.status(200).json({ error: false, message: 'Connexion réussie' });
   },
@@ -65,6 +88,13 @@ export const authController = {
       password: hashedPassword,
       location,
     } as User);
+
+    // Store user details in session
+    req.session.connectedUser = {
+      id: createdUser.id,
+      firstname: createdUser.firstname,
+      image: createdUser.image,
+    };
 
     return res.status(200).json({ error: false, message: 'Inscription réussie' });
   },

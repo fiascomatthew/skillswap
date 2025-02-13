@@ -6,6 +6,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      - SESSION_SECRET=${SESSION_SECRET}
+      - NODE_ENV=${NODE_ENV}
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

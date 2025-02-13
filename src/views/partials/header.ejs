@@ -2,11 +2,15 @@
   <a class="header__logo-link" href="/">
     <img class="header__logo-img" src="/images/logo.png" alt="logo skillswap">
   </a>
-  <div class="header__register-login">
-    <button class="secondary-button header__login">Se connecter</button>
-    <button class="primary-button header__register">S'inscrire</button>
-  </div>
+  <% if ((typeof connectedUser === 'undefined' || !connectedUser) && (typeof hideAuthButtons === 'undefined' || !hideAuthButtons)) { %> 
+    <div class="header__register-login">
+      <button class="secondary-button header__login">Se connecter</button>
+      <button class="primary-button header__register">S'inscrire</button>
+    </div>
+  <% } %>
 </header>
 
-<%- include('../partials/loginModal') %>
-<%- include('../partials/registerModal') %>
+<% if ((typeof connectedUser === 'undefined' || !connectedUser) && (typeof hideAuthButtons === 'undefined' || !hideAuthButtons)) { %> 
+  <%- include('../partials/loginModal') %>
+  <%- include('../partials/registerModal') %>
+<% } %>

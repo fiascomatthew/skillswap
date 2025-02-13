@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const error of registerForm.querySelectorAll('.modal__error')) {
       error.style.display = 'none';
     }
+    const registerError = document.getElementById('registerError');
     registerError.style.display = 'none';
 
     // Validate inputs only inside the registerForm
@@ -156,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const error of loginForm.querySelectorAll('.modal__error')) {
       error.style.display = 'none';
     }
+
+    const loginError = document.getElementById('loginError');
     loginError.style.display = 'none';
 
     // Validate inputs only inside the loginForm
