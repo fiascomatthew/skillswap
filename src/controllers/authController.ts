@@ -5,10 +5,18 @@ import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
   getLoginPage(req: Request, res: Response) {
+    if (req.session?.connectedUser) {
+      return res.redirect('/register');
+    }
+
     res.render('pages/login');
   },
 
   getRegisterPage(req: Request, res: Response) {
+    if (req.session?.connectedUser) {
+      return res.redirect('/');
+    }
+
     res.render('pages/register');
   },
 
