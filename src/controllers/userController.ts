@@ -28,6 +28,8 @@ export const userController = {
       return next(new HttpError('Utilisateur introuvable', 404));
     }
 
+    console.log('SESSION', req.session);
+
     return res.render('pages/user', { user });
   },
 };

@@ -34,6 +34,13 @@ export const authController = {
       });
     }
 
+    // Store user details in session
+    req.session.connectedUser = {
+      id: user.id,
+      firstname: user.firstname,
+      image: user.image,
+    };
+
     return res.status(200).json({ error: false, message: 'Connexion réussie' });
   },
 
@@ -65,6 +72,13 @@ export const authController = {
       password: hashedPassword,
       location,
     } as User);
+
+    // Store user details in session
+    req.session.connectedUser = {
+      id: createdUser.id,
+      firstname: createdUser.firstname,
+      image: createdUser.image,
+    };
 
     return res.status(200).json({ error: false, message: 'Inscription réussie' });
   },
