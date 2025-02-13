@@ -4,6 +4,14 @@ import bcrypt from 'bcrypt';
 import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
+  getLoginPage(req: Request, res: Response) {
+    res.render('pages/login');
+  },
+
+  getRegisterPage(req: Request, res: Response) {
+    res.render('pages/register');
+  },
+
   async login(req: Request, res: Response) {
     const {
       value: { email, password },

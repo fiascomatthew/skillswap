@@ -5,7 +5,7 @@ function catchErrors(
     req: Request,
     res: Response,
     next: NextFunction,
-  ) => Promise<void | Response<any>>,
+  ) => void | Promise<void | Response<any>>,
 ) {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {

@@ -9,6 +9,8 @@ const router = Router();
 router.get('/', catchErrors(getHomePage));
 router.get('/search', catchErrors(getSkillsSearch));
 
+router.get('/login', catchErrors(authController.getLoginPage));
+router.get('/register', catchErrors(authController.getRegisterPage));
 router.post('/login', catchErrors(authController.login));
 router.post('/register', catchErrors(authController.register));
 
