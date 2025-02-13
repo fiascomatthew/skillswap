@@ -27,9 +27,9 @@ export class User extends UserModel {
   followers?: User[];
   @BelongsToMany(() => User, 'user_has_follower', 'follower_id', 'user_id')
   following?: User[];
-  @HasMany(() => ReviewModel, 'reviewer_id')
-  reviewsReceived?: ReviewModel[];
   @HasMany(() => ReviewModel, 'reviewee_id')
+  reviewsReceived?: ReviewModel[];
+  @HasMany(() => ReviewModel, 'reviewer_id')
   reviewsGiven?: ReviewModel[];
   @HasMany(() => MessageModel, 'sender_id')
   messagesSent?: MessageModel[];

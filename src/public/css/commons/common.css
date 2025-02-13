@@ -1,17 +1,17 @@
 /* === Primary button === */
 .primary-button {
   display: block;
-  padding: 0.8rem 1.2rem;
+  padding: 0.6rem 1.1rem;
 
   text-align: center;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   color: var(--text-light-color);
   background-color: var(--dark-color);
 
   border: 1px solid var(--dark-color);
-  border-radius: 0.8rem;
+  border-radius: 0.7rem;
 }
 
 .primary-button:hover {
@@ -26,7 +26,7 @@
 .secondary-button {
   color: var(--text-dark-color);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .secondary-button:hover {
@@ -45,11 +45,31 @@
   color: var(--text-light-color);
   border: none;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .call-to-action:hover {
   background-color: var(--primary-darker-color);
+}
+
+/* === Smaller call-toaction button === */
+.small-call-to-action {
+  display: block;
+  padding: 0.6rem 1.1rem;
+
+  text-align: center;
+  font-weight: bold;
+
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+
+  border-radius: 0.7rem;
+}
+
+.small-call-to-action:hover {
+  background-color: var(--primary-darker-color);
+
+  transition: all 0.1s ease-in-out;
 }
 
 /* === Links === */

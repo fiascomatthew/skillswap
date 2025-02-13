@@ -3,7 +3,7 @@
     <img 
       class="user__avatar" 
       src="<%= user.image ? `/images/${user.image}.png` : '/images/avatar.png' %>" 
-      alt="Photo de profil de <%= user.firstname %> <%= user.lastname %>"
+      alt="Photo de profil de <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>."
     >
 
     <div class="user__info">

@@ -4,7 +4,7 @@ body {
   font-family: Roboto, sans-serif;
   color: var(--text-color);
   background-color: var(--light-color);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 /* ======== Header ======== */
@@ -67,7 +67,7 @@ body {
 
 .footer__description {
   color: var(--text-light-color);
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 1rem;
 }
 
@@ -83,7 +83,7 @@ body {
 }
 
 .footer__item {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .footer__link {

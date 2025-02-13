@@ -1,10 +1,10 @@
-import type { NextFunction, Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { User } from '../models';
 import bcrypt from 'bcrypt';
 import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
-  async login(req: Request, res: Response, next: NextFunction) {
+  async login(req: Request, res: Response) {
     const {
       value: { email, password },
       error,
