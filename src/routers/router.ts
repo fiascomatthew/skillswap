@@ -4,6 +4,7 @@ import { userController } from '../controllers/userController';
 import { catchErrors } from '../middlewares/catchErrors';
 import { getHomePage, getSkillsSearch } from '../controllers/mainController';
 import { isAuthorized } from '../middlewares/isAuthorized';
+import { sanitizeInputs } from '../middlewares/sanitizeInputs';
 
 const router = Router();
 
@@ -12,8 +13,9 @@ router.get('/search', catchErrors(getSkillsSearch));
 
 router.get('/login', catchErrors(authController.getLoginPage));
 router.get('/register', catchErrors(authController.getRegisterPage));
-router.post('/login', catchErrors(authController.login));
-router.post('/register', catchErrors(authController.register));
+
+router.post('/login', sanitizeInputs, catchErrors(authController.login));
+router.post('/register', sanitizeInputs, catchErrors(authController.register));
 
 router.get('/users/:id(\\d+)', isAuthorized, catchErrors(userController.show));
 

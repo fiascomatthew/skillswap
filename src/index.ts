@@ -2,6 +2,8 @@ import express, { type Express } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import session from 'express-session';
+import helmet from 'helmet';
+import './models/sequelizeClient';
 import router from './routers/router';
 import notFound from './middlewares/notFound';
 import errorHandler from './middlewares/errorHandler';
@@ -19,6 +21,40 @@ const sessionSecret: string = process.env.SESSION_SECRET as string;
 const environment: string = process.env.NODE_ENV as string;
 
 dotenv.config();
+
+// helmet middleware to secure the app
+app.use(helmet());
+
+// ! Activate only in production
+app.use(
+  helmet.hsts({
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true,
+  }),
+);
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://cdnjs.cloudflare.com', 'data:'],
+      imgSrc: ["'self'", 'https://cdnjs.cloudflare.com', 'data:'],
+      fontSrc: ["'self'", 'https://cdnjs.cloudflare.com', 'data:'],
+      connectSrc: ["'self'", 'https://facebook.com', 'https://twitter.com', 'https://linkedin.com'],
+    },
+  }),
+);
+
+app.use(helmet.frameguard({ action: 'deny' }));
+
+app.use(helmet.noSniff());
+
+app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
+
+app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: 'none' }));
+
+app.use(helmet.dnsPrefetchControl({ allow: false }));
 
 // Configure view engine
 app.set('view engine', 'ejs');
