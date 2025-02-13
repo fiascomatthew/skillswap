@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginError = document.getElementById('loginPageError');
 
   loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     let isValid = true;
 
     // Reset previous errors only inside the loginForm
@@ -49,8 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
+        // Get the 'returnTo' value from the URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const returnTo = urlParams.get('returnTo');
+
         // Redirect on successful login
-        window.location.href = '/';
+        window.location.href = returnTo ? returnTo : '/';
       } catch (err) {
         window.location.href = '/error';
       }

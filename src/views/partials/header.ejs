@@ -10,5 +10,7 @@
   <% } %>
 </header>
 
-<%- include('../partials/loginModal') %>
-<%- include('../partials/registerModal') %>
+<% if (!connectedUser && (typeof hideAuthButtons === 'undefined' || !hideAuthButtons)) { %> 
+  <%- include('../partials/loginModal') %>
+  <%- include('../partials/registerModal') %>
+<% } %>

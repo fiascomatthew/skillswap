@@ -3,6 +3,7 @@ import { authController } from '../controllers/authController';
 import { userController } from '../controllers/userController';
 import { catchErrors } from '../middlewares/catchErrors';
 import { getHomePage, getSkillsSearch } from '../controllers/mainController';
+import { isAuthorized } from '../middlewares/isAuthorized';
 
 const router = Router();
 
@@ -14,7 +15,7 @@ router.get('/register', catchErrors(authController.getRegisterPage));
 router.post('/login', catchErrors(authController.login));
 router.post('/register', catchErrors(authController.register));
 
-router.get('/users/:id(\\d+)', catchErrors(userController.show));
+router.get('/users/:id(\\d+)', isAuthorized, catchErrors(userController.show));
 
 router.get('/error', (req: Request, res: Response) => {
   res.render('pages/error', { message: 'Une erreur est survenue' });
