@@ -25,7 +25,7 @@
 					<h1 class="register__title">S'inscrire</h1>
 					<p class="register__subtitle">
 						Déjà membre ? 
-						<a href="/login" class="register__alt-link secondary-button">Se connecter</a>
+						<a href="/login<%= returnTo ? '?returnTo=' + encodeURIComponent(returnTo) : '' %>"  class="register__alt-link secondary-button">Se connecter</a>
 					</p>
 				</header>
 

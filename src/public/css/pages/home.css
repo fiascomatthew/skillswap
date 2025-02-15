@@ -110,27 +110,23 @@
 /* === Random Users Section === */
 
 .random-users {
-  margin: 3rem 10%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
   max-width: 1200px;
+  margin: 3rem auto 4rem;
+  gap: 3rem;
 }
 
 .random-users__title {
-  text-align: left;
   color: var(--text-dark-color);
   font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 2rem;
 }
 
 .random-users__list {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-}
-
-/* Random Users Section Responsive */
-@media screen and (max-width: 720px) {
-  .random-users {
-    margin: 2rem 10%;
-  }
+  justify-content: center;
 }

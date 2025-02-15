@@ -8,7 +8,7 @@ export const getHomePage = async (req: Request, res: Response) => {
   const users = await User.findAll({
     include: [{ association: 'skills' }],
     order: sequelizeClient.fn('RANDOM'),
-    limit: 5,
+    limit: 6,
   });
 
   res.render('pages/home', { users });

@@ -1,5 +1,5 @@
-<a class="user__link" href="/users/<%= user.id %>" aria-label="Voir le profil de <%= user.firstname %> <%= user.lastname %>">
-  <article class="user__profile">
+<article class="user__profile">
+    <a class="user__link" href="/users/<%= user.id %>" aria-label="Voir le profil de <%= user.firstname %> <%= user.lastname %>">
     <img 
       class="user__avatar" 
       src="<%= user.image ? `/images/${user.image}.png` : '/images/avatar.png' %>" 
@@ -22,6 +22,6 @@
           <% }) %>
         </ul>
       </div>
-    
-  </article>
-</a>
+    </div>
+  </a>
+</article>

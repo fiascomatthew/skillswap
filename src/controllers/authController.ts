@@ -9,7 +9,9 @@ export const authController = {
       return res.redirect('/register');
     }
 
-    res.render('pages/login');
+    const returnTo = req.query.returnTo || '';
+
+    res.render('pages/login', { returnTo });
   },
 
   getRegisterPage(req: Request, res: Response) {
@@ -17,7 +19,9 @@ export const authController = {
       return res.redirect('/');
     }
 
-    res.render('pages/register');
+    const returnTo = req.query.returnTo || '';
+
+    res.render('pages/register', { returnTo });
   },
 
   async login(req: Request, res: Response) {
