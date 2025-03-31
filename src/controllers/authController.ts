@@ -65,6 +65,7 @@ export const authController = {
   },
 
   async logout(req: Request, res: Response) {
+    console.log('LOGOUT CALLED');
     if (!req.session.connectedUser) {
       return res.status(400).json({
         error: true,
@@ -80,10 +81,8 @@ export const authController = {
         });
       }
 
-      return res.status(200).json({
-        error: false,
-        message: 'Déconnexion réussie.',
-      });
+      res.clearCookie('connect.sid');
+      return res.redirect('/');
     });
   },
 
