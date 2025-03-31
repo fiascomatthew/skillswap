@@ -15,6 +15,7 @@ router.get('/login', catchErrors(authController.getLoginPage));
 router.get('/register', catchErrors(authController.getRegisterPage));
 
 router.post('/login', sanitizeInputs, catchErrors(authController.login));
+router.post('/logout', sanitizeInputs, catchErrors(authController.logout));
 router.post('/register', sanitizeInputs, catchErrors(authController.register));
 
 router.get('/users/:id(\\d+)', isAuthorized, catchErrors(userController.show));

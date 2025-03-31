@@ -64,6 +64,29 @@ export const authController = {
     return res.status(200).json({ error: false, message: 'Connexion réussie' });
   },
 
+  async logout(req: Request, res: Response) {
+    if (!req.session.connectedUser) {
+      return res.status(400).json({
+        error: true,
+        message: "Aucun utilisateur n'est connecté.",
+      });
+    }
+
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({
+          error: true,
+          message: 'Erreur lors de la déconnexion.',
+        });
+      }
+
+      return res.status(200).json({
+        error: false,
+        message: 'Déconnexion réussie.',
+      });
+    });
+  },
+
   async register(req: Request, res: Response) {
     const {
       value: { firstname, lastname, email, password, confirmPassword, location },
