@@ -1,0 +1,130 @@
+/* ======== Register Page ======== */
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.register__container {
+  background-color: var(--lighter-color);
+  padding: 3.5rem 5rem;
+  border-radius: 0.7rem;
+  width: 100%;
+  max-width: 31rem;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== Header ======== */
+.register__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.register__logo {
+  height: 2.5rem;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.register__title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.register__subtitle {
+  margin-bottom: 2.5rem;
+}
+
+/* ======== Form ======== */
+.register__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register__field {
+  margin-bottom: 1.2rem;
+}
+
+.register__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.register__input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.register__input:focus {
+  outline: none;
+  border-color: var(--dark-color);
+}
+
+.register__error {
+  display: none;
+  color: red;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.register__input--location {
+  padding-left: 2rem;
+}
+
+.register__location-wrapper {
+  position: relative;
+}
+
+.register__location-icon {
+  position: absolute;
+  top: 27%;
+  left: 0.8rem;
+  color: var(--text-neutral-color);
+  font-size: 0.9rem;
+}
+
+.register__terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.register__checkbox {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ======== Global Error ======== */
+.register__global-error {
+  display: none;
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.register__submit-button {
+  margin-top: 1.5rem;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 500px) {
+  .register {
+    padding: 1rem;
+  }
+
+  .register__container {
+    padding: 2rem;
+    border-radius: 0.5rem;
+  }
+}

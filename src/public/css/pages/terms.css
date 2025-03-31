@@ -1,0 +1,48 @@
+.about__banner {
+  height: 40vh;
+  padding: 0 10%;
+  color: var(--text-light-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-image: linear-gradient(45deg, rgba(251, 81, 57, 1), rgba(47, 47, 149, 1));
+  background-size: cover;
+  background-position: center;
+}
+
+.about__terms {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  padding: 1rem 0 1rem 0;
+}
+
+.about__terms-content {
+  justify-self: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding: 1rem 0 1rem 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+span {
+  font-style: italic;
+  font-weight: bold;
+}

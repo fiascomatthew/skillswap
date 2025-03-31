@@ -1,0 +1,262 @@
+/* === General Styles === */
+.user__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1300px;
+  margin: 2rem auto 4rem;
+}
+
+.user__subsection::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1.5px;
+  background: var(--darker-color);
+  opacity: 0.2;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+/* === User Header Section (Profile Info, Skills, Interests) === */
+.user__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.02);
+}
+
+.user__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* === User Avatar === */
+
+.user__avatar {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* === User Identity (Name and Location) === */
+.user__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.user__name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--text-dark-color);
+}
+
+.user__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-neutral-color);
+}
+
+/* === User Actions (Follow & Contact Buttons) === */
+.user__actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* === Skills and Interests Section === */
+.user__subsection {
+  text-align: center;
+  width: 100%;
+}
+
+.subsection__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark-color);
+  margin-bottom: 0.8rem;
+}
+
+.subsection__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.user__li {
+  background-color: var(--darker-color);
+  color: var(--text-light-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+}
+
+/* === Tabs Section (Navigation and Content) === */
+.user__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+}
+
+/* === Tabs Navigation === */
+.user__tabs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.user__tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-dark-color);
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.tab__icon {
+  margin-bottom: 0.3rem;
+}
+
+.tab__text {
+  display: none;
+}
+
+.user__tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.user__tab--active {
+  color: var(--text-alt-color);
+  border-bottom: 3px solid var(--blue-vif);
+}
+
+/* === Tabs Content (About, Availability, Reviews) === */
+.user__tab-content {
+  display: none;
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.user__tab-content--active {
+  display: block;
+}
+
+/* === Availability List === */
+.user__availabilities {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 350px;
+}
+
+.user__availability {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  background: var(--darker-color);
+  color: var(--text-light-color);
+  border-radius: 0.3rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* === Reviews List === */
+.user__reviews {
+  padding: 0;
+}
+
+.user__review {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--lighter-color);
+  margin-bottom: 1rem;
+  box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.02);
+}
+
+.review__author {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.author__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.author__identity {
+  font-weight: bold;
+  color: var(--text-primary-color);
+}
+
+.review__rating {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-dark-color);
+  margin-bottom: 0.2rem;
+}
+
+.review__description {
+  font-size: 0.9rem;
+  color: var(--text-dark-color);
+}
+
+.review__date {
+  font-size: 0.8rem;
+  color: var(--text-neutral-color);
+}
+
+/* === Responsive Design === */
+
+@media (min-width: 769px) {
+  .user__container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .user__header {
+    width: 35%;
+    min-width: 370px;
+  }
+
+  .user__content {
+    flex-grow: 1;
+  }
+
+  .user__tabs {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px), (min-width: 876px) {
+  .tab__text {
+    display: block;
+  }
+}

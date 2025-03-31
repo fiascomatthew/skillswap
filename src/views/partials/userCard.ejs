@@ -1,0 +1,27 @@
+<article class="user__profile">
+    <a class="user__link" href="/users/<%= user.id %>" aria-label="Voir le profil de <%= user.firstname %> <%= user.lastname %>">
+    <img 
+      class="user__avatar" 
+      src="<%= user.image ? `/images/${user.image}.png` : '/images/avatar.png' %>" 
+      alt="Photo de profil de <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>."
+    >
+
+    <div class="user__info">
+      <div class="user__identity">
+        <h3 class="user__name"><%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> <%= user.lastname.charAt(0).toUpperCase() %>.</h3>
+        <div class="user__location">
+          <i class="location__icon fa-solid fa-location-dot"></i>
+          <p class="location__text"><%= user.location %></p>
+        </div>
+      </div>
+      <div class="user__skills-container">
+        <p class="user__skilled-in">Compétences:</p>
+        <ul class="user__skills">
+          <% user.skills.slice(0, 3).forEach(skill => { %>
+              <li class="user__skill"><%= skill.description %></li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </a>
+</article>

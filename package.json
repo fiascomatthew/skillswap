@@ -3,26 +3,32 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "node --loader ts-node/esm src/index.ts"
+    "dev": "npx tsx --watch src/index.ts"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "helmet": "^8.0.0",
+    "joi": "^17.13.3",
     "pg": "^8.13.1",
-    "sequelize": "^6.37.5"
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",
     "@types/node": "^22.13.0",
     "@types/sequelize": "^4.28.20",
-    "biome": "^0.2.2",
+    "@types/validator": "^13.12.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
