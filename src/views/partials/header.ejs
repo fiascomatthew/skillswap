@@ -7,9 +7,9 @@
       <button class="secondary-button header__login">Se connecter</button>
       <button class="primary-button header__register">S'inscrire</button>
     </div>
-    <% } else { %>
-      <a class="secondary-button header__logout" href="/logout">Se déconnecter</a>
-    <% } %>
+  <% } else { %>
+    <a class="secondary-button header__logout" href="/logout">Se déconnecter</a>
+  <% } %>
 </header>
 
 <% if ((typeof connectedUser === 'undefined' || !connectedUser) && (typeof hideAuthButtons === 'undefined' || !hideAuthButtons)) { %> 
