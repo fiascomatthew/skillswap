@@ -65,14 +65,6 @@ export const authController = {
   },
 
   async logout(req: Request, res: Response) {
-    console.log('LOGOUT CALLED');
-    if (!req.session.connectedUser) {
-      return res.status(400).json({
-        error: true,
-        message: "Aucun utilisateur n'est connecté.",
-      });
-    }
-
     req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({
@@ -80,10 +72,8 @@ export const authController = {
           message: 'Erreur lors de la déconnexion.',
         });
       }
-
-      res.clearCookie('connect.sid');
-      return res.redirect('/');
     });
+    return res.redirect('/');
   },
 
   async register(req: Request, res: Response) {
