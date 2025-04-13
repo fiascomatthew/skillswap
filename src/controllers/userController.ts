@@ -50,8 +50,8 @@ export const userController = {
       ? user.removeFollower(currentUser)
       : user.addFollower(currentUser));
 
-    console.log('isFollowing:', await currentUser.isFollowing(user));
+    const isFollowing = await currentUser.isFollowing(user);
 
-    return res.redirect(`/users/${id}`);
+    return res.json({ success: true, isFollowing });
   },
 };

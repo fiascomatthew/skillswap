@@ -88,6 +88,7 @@
 /* === Error message === */
 
 .app-error-message {
+  display: none;
   color: var(--error-color);
   font-size: 0.9rem;
   font-weight: bold;
