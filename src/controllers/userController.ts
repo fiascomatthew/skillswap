@@ -32,12 +32,20 @@ export const userController = {
     const currentUser = await User.findByPk(userId);
     const isFollowing = currentUser ? await currentUser.isFollowing(user) : false;
 
-    return res.render('pages/user', { user, isFollowing });
+    return res.render('pages/user', {
+      user,
+      isSelf: req.session.connectedUser?.id === user.id,
+      isFollowing,
+    });
   },
 
   async toggleFollow(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const userId = req.session.connectedUser?.id;
+
+    if (Number.parseInt(id) === userId) {
+      return res.status(400).json({ success: false, message: 'Tu ne peux pas te suivre toi-même' });
+    }
 
     const user = await User.findByPk(id);
     const currentUser = await User.findByPk(userId);
