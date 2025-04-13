@@ -20,6 +20,11 @@ router.post('/register', sanitizeInputs, catchErrors(authController.register));
 router.get('/logout', catchErrors(authController.logout));
 
 router.get('/users/:id(\\d+)', isAuthorized, catchErrors(userController.show));
+router.post(
+  '/users/:id(\\d+)/toggle-follow',
+  isAuthorized,
+  catchErrors(userController.toggleFollow),
+);
 
 router.get('/error', (req: Request, res: Response) => {
   res.render('pages/error', { message: 'Une erreur est survenue' });
