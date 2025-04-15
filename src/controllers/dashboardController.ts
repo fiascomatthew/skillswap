@@ -15,6 +15,8 @@ export const dashboardController = {
         { association: 'skills' },
         { association: 'interests' },
         { association: 'availabilities' },
+        { association: 'followers' },
+        { association: 'following' },
       ],
     });
 
