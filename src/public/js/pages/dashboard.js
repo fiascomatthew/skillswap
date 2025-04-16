@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editUserError.style.display = 'none';
   }
 
-  // USER INFO MODAL
+  // USER EDIT FORM MODAL
 
   const editUserBtn = document.getElementById('edit-user-btn');
   const editUserModal = document.getElementById('editUserModal');
@@ -48,4 +48,47 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // USER EDIT FORM VALIDATION
+
+  const editUserForm = document.getElementById('editUserForm');
+
+  editUserForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+    const isValid = true;
+
+    const editUserError = document.getElementById('editUserError');
+
+    if (isValid) {
+      const formData = new URLSearchParams(new FormData(editUserForm));
+
+      try {
+        const response = await fetch('/dashboard/user', {
+          method: 'PATCH',
+          body: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        });
+
+        const data = await response.json();
+
+        // if (data.violation) {
+        //   window.location.href = '/error';
+        //   return;
+        // }
+
+        if (data.error) {
+          // Display the general error
+          editUserError.style.display = 'block';
+          return;
+        }
+
+        // Redirect on successful update
+        window.location.href = '/dashboard';
+      } catch (err) {
+        window.location.href = '/error';
+      }
+    }
+  });
 });

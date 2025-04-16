@@ -6,11 +6,11 @@
     </button>
 
     <div class="modal__header">
-      <h2 class="modal__title">Modifier mes infos</h2>
+      <h2 class="modal__title">Modifier mon profil</h2>
       <p class="modal__subtitle"></p>
     </div>
 
-    <form class="modal__form" method="POST" action="/dashboard/update">
+    <form class="modal__form" id="editUserForm">
       <div class="modal__wrapper">
         <label for="firstname" class="modal__label">Prénom</label>
         <input type="text" id="firstname" name="firstname" class="modal__input" value="<%= user.firstname %>">
