@@ -23,6 +23,11 @@
         <!-- First Section: User Info, Skills, and Interests -->
         <section class="dashboard__header">
           <div class="dashboard__user">
+            <div class="user__edit">
+              <button class="dashboard__edit-btn secondary-button" id="edit-user-btn" aria-label="Modifier mes informations">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+            </div>
             <img
               src="<%= user.image ? `/images/${user.image}.png` : '/images/avatar.png' %>"
               alt="Avatar de <%= user.firstname %> <%= user.lastname %>"
@@ -52,76 +57,76 @@
               <span>compétences</span>
             </li>
           </ul>
-      </section>
-
-      <!--  Second section: about, skills and interests  -->
-      <section class="dashboard__content">
-        
-        <!--  About Section  -->
-        <section class="dashboard__about">
-          <div class="dashboard__section-header">
-            <h2 class="dashboard__section-title">À propos de moi</h2>
-            <button
-            class="dashboard__edit-btn"
-            aria-label="Modifier la section À propos de moi"
-            data-modal-target="about"
-            >
-              Modifier
-            </button>
-          </div>
-
-          <% if (user.bio ) { %>
-            <p class="about__text"><%= user.bio %></p>
-          <% } else { %>
-            <p class="about__no-text">Vous n'avez pas encore renseigné votre bio.</p>
-          <% } %>
         </section>
 
-        <!--  Skills Section  -->
-        <section class="dashboard__skills">
-          <div class="dashboard__section-header">
-            <h2 class="dashboard__section-title">Mes compétences</h2>
-            <button
-            class="dashboard__edit-btn"
-            aria-label="Modifier mes compétences"
-            data-modal-target="skills"
-            >
-            Modifier
-          </button>
-        </div>
-        <ul class="dashboard__tag-list">
-          <% user.skills.forEach(skill => { %>
-            <li class="dashboard__tag"><%= skill.name %></li>
-            <% }) %>
-          </ul>
-        </section>
-        
-        <!--  Interests Section  -->
-        <section class="dashboard__interests">
-          <div class="dashboard__section-header">
-            <h2 class="dashboard__section-title">Mes intérêts</h2>
-            <button
-            class="dashboard__edit-btn"
-            aria-label="Modifier mes intérêts"
-            data-modal-target="interests"
-            >
+        <!--  Second section: about, skills and interests  -->
+        <section class="dashboard__content">
+          
+          <!--  About Section  -->
+          <section class="dashboard__about">
+            <div class="dashboard__section-header">
+              <h2 class="dashboard__section-title">À propos de moi</h2>
+              <button
+              class="dashboard__edit-btn"
+              aria-label="Modifier la section À propos de moi"
+              data-modal-target="about"
+              >
+                Modifier
+              </button>
+            </div>
+
+            <% if (user.bio ) { %>
+              <p class="about__text"><%= user.bio %></p>
+            <% } else { %>
+              <p class="about__no-text">Vous n'avez pas encore renseigné votre bio.</p>
+            <% } %>
+          </section>
+
+          <!--  Skills Section  -->
+          <section class="dashboard__skills">
+            <div class="dashboard__section-header">
+              <h2 class="dashboard__section-title">Mes compétences</h2>
+              <button
+              class="dashboard__edit-btn"
+              aria-label="Modifier mes compétences"
+              data-modal-target="skills"
+              >
               Modifier
             </button>
           </div>
           <ul class="dashboard__tag-list">
-            <% user.interests.forEach(interest => { %>
-              <li class="dashboard__tag"><%= interest.name %></li>
+            <% user.skills.forEach(skill => { %>
+              <li class="dashboard__tag"><%= skill.name %></li>
               <% }) %>
             </ul>
           </section>
           
+          <!--  Interests Section  -->
+          <section class="dashboard__interests">
+            <div class="dashboard__section-header">
+              <h2 class="dashboard__section-title">Mes intérêts</h2>
+              <button
+              class="dashboard__edit-btn"
+              aria-label="Modifier mes intérêts"
+              data-modal-target="interests"
+              >
+                Modifier
+              </button>
+            </div>
+            <ul class="dashboard__tag-list">
+              <% user.interests.forEach(interest => { %>
+                <li class="dashboard__tag"><%= interest.name %></li>
+              <% }) %>
+            </ul>
+          </section>
+            
         </section>
         
-        
-        </div>
-      </main>
+      </div>
+    </main>
       
       <%- include('../partials/footer') %>
-    </body>
-    </html>
+      <%- include('../partials/dashboard/editUserInfoModal') %>
+  </body>
+</html>
     
