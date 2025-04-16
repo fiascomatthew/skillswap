@@ -29,6 +29,7 @@ router.post(
 
 router.get('/dashboard', isAuthorized, catchErrors(dashboardController.show));
 router.patch('/dashboard/user', isAuthorized, catchErrors(dashboardController.editUser));
+router.patch('/dashboard/bio', isAuthorized, catchErrors(dashboardController.editBio));
 
 router.get('/error', (req: Request, res: Response) => {
   res.render('pages/error', { message: 'Une erreur est survenue' });

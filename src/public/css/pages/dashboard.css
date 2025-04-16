@@ -30,8 +30,8 @@
 
 .user__edit {
   position: absolute;
-  top: 1.3rem;
-  right: 1.3rem;
+  top: 1.4rem;
+  right: 1.4rem;
 }
 
 .dashboard__edit-btn {
@@ -94,7 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding: 2rem;
+  padding: 2.5rem;
   background: var(--lighter-color);
   border-radius: 0.7rem;
 }
