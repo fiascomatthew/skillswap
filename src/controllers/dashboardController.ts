@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import { User } from '../models';
 import HttpError from '../errors/HttpError';
+import { editUserSchema } from '../utils/validationSchemas';
 
 export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {
@@ -33,22 +34,15 @@ export const dashboardController = {
     if (!userId) {
       return next(new HttpError('Utilisateur non connecté', 401));
     }
-    const { firstname, lastname, email, location } = req.body;
-    console.log('req.body', req.body);
 
-    if (
-      !firstname ||
-      !lastname ||
-      !email ||
-      !location ||
-      firstname === '' ||
-      lastname === '' ||
-      email === '' ||
-      location === ''
-    ) {
-      return res.status(401).json({
-        error: true,
-        message: 'Tous les champs sont obligatoires',
+    const {
+      value: { firstname, lastname, email, location },
+      error,
+    } = editUserSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        violation: true,
       });
     }
 

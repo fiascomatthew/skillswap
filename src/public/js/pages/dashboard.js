@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
-        // if (data.violation) {
-        //   window.location.href = '/error';
-        //   return;
-        // }
+        if (data.violation) {
+          window.location.href = '/error';
+          return;
+        }
 
         if (data.error) {
           // Display the general error
