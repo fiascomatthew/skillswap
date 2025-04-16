@@ -12,23 +12,27 @@
 
     <form class="modal__form" id="editUserForm">
       <div class="modal__wrapper">
-        <label for="firstname" class="modal__label">Prénom</label>
-        <input type="text" id="firstname" name="firstname" class="modal__input" value="<%= user.firstname %>">
+        <label for="editUserFirstname" class="modal__label">Prénom</label>
+        <input type="text" id="editUserFirstname" name="firstname" class="modal__input" value="<%= user.firstname %>">
+        <p class="modal__error" id="editUserFirstnameError">Prénom requis</p>
       </div>
 
       <div class="modal__wrapper">
-        <label for="lastname" class="modal__label">Nom</label>
-        <input type="text" id="lastname" name="lastname" class="modal__input" value="<%= user.lastname %>">
+        <label for="editUserLastname" class="modal__label">Nom</label>
+        <input type="text" id="editUserLastname" name="lastname" class="modal__input" value="<%= user.lastname %>">
+        <p class="modal__error" id="editUserLastnameError">Nom requis</p>
       </div>
 
       <div class="modal__wrapper">
-        <label for="location" class="modal__label">Ville</label>
-        <input type="text" id="location" name="location" class="modal__input" value="<%= user.location %>">
+        <label for="editUserLocation" class="modal__label">Ville</label>
+        <input type="text" id="editUserLocation" name="location" class="modal__input" value="<%= user.location %>">
+        <p class="modal__error" id="editUserLocationError">Ville requise</p>
       </div>
 
       <div class="modal__wrapper">
-        <label for="email" class="modal__label">Adresse e-mail</label>
-        <input type="email" id="email" name="email" class="modal__input" value="<%= user.email %>">
+        <label for="editUserEmail" class="modal__label">Adresse e-mail</label>
+        <input type="email" id="editUserEmail" name="email" class="modal__input" value="<%= user.email %>">
+        <p class="modal__error" id="editUserEmailError">Adresse e-mail requise</p>
       </div>
 
       <p class="modal__global-error" id="editUserError">Une erreur est survenue. Merci de réessayer.</p>

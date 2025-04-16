@@ -55,9 +55,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   editUserForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission
-    const isValid = true;
+    let isValid = true;
+
+    // Reset previous errors only inside the editUserForm
+    for (const error of editUserForm.querySelectorAll('.modal__error')) {
+      error.style.display = 'none';
+    }
 
     const editUserError = document.getElementById('editUserError');
+    editUserError.style.display = 'none';
+
+    // Validate inputs only inside the editUserForm
+    for (const input of editUserForm.querySelectorAll('.modal__input')) {
+      const error = document.getElementById(`${input.id}Error`);
+      if (!input.value) {
+        error.style.display = 'block';
+        isValid = false;
+      }
+    }
 
     if (isValid) {
       const formData = new URLSearchParams(new FormData(editUserForm));

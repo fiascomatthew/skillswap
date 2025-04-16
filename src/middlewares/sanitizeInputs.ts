@@ -9,7 +9,6 @@ const sanitizeInputs = (req: Request, res: Response, next: NextFunction) => {
         req.body[key] = validator.escape(req.body[key]);
       }
     }
-    console.log('After sanitize:', req.body);
   }
   next();
 };

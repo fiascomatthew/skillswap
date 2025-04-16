@@ -41,12 +41,21 @@ export const dashboardController = {
     } = editUserSchema.validate(req.body);
 
     if (error) {
+      console.log(error);
       return res.status(500).json({
         violation: true,
       });
     }
 
-    await User.update({ firstname, lastname, email, location }, { where: { id: userId } });
+    try {
+      await User.update({ firstname, lastname, email, location }, { where: { id: userId } });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de la mise à jour de l'utilisateur.",
+      });
+    }
 
     return res.status(200).json({ error: false, message: 'Connexion réussie' });
   },
