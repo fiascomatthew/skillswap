@@ -43,9 +43,6 @@ export class UserModel extends Model<UserModel> {
   }
 
   async addFollower(user: UserModel): Promise<void> {
-    console.log('USER:', user);
-    console.log('THIS:', this);
-    console.log('FOLLOWERS:', this.followers);
     await this.$add('followers', user);
   }
 

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editUserError.style.display = 'none';
   }
 
-  // USER INFO MODAL
+  // USER EDIT FORM MODAL
 
   const editUserBtn = document.getElementById('edit-user-btn');
   const editUserModal = document.getElementById('editUserModal');
@@ -48,4 +48,62 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // USER EDIT FORM VALIDATION
+
+  const editUserForm = document.getElementById('editUserForm');
+
+  editUserForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+    let isValid = true;
+
+    // Reset previous errors only inside the editUserForm
+    for (const error of editUserForm.querySelectorAll('.modal__error')) {
+      error.style.display = 'none';
+    }
+
+    const editUserError = document.getElementById('editUserError');
+    editUserError.style.display = 'none';
+
+    // Validate inputs only inside the editUserForm
+    for (const input of editUserForm.querySelectorAll('.modal__input')) {
+      const error = document.getElementById(`${input.id}Error`);
+      if (!input.value) {
+        error.style.display = 'block';
+        isValid = false;
+      }
+    }
+
+    if (isValid) {
+      const formData = new URLSearchParams(new FormData(editUserForm));
+
+      try {
+        const response = await fetch('/dashboard/user', {
+          method: 'PATCH',
+          body: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.violation) {
+          window.location.href = '/error';
+          return;
+        }
+
+        if (data.error) {
+          // Display the general error
+          editUserError.style.display = 'block';
+          return;
+        }
+
+        // Redirect on successful update
+        window.location.href = '/dashboard';
+      } catch (err) {
+        window.location.href = '/error';
+      }
+    }
+  });
 });
