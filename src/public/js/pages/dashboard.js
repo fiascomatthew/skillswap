@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const editUserBtn = document.getElementById('edit-user-btn');
   const editUserModal = document.getElementById('editUserModal');
   const closeEditUserBtn = document.getElementById('editUserCloseBtn');
+  const editUserError = document.getElementById('editUserError');
 
   if (editUserBtn && editUserModal && closeEditUserBtn) {
     // Open modal
@@ -62,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       error.style.display = 'none';
     }
 
-    const editUserError = document.getElementById('editUserError');
     editUserError.style.display = 'none';
 
     // Validate inputs only inside the editUserForm
