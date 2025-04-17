@@ -155,11 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
 
-      if (data.violation) {
-        window.location.href = '/error';
-        return;
-      }
-
       if (data.error) {
         editBioError.style.display = 'block';
         return;
