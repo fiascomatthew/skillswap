@@ -106,4 +106,69 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // BIO EDIT FORM MODAL
+
+  const editBioBtn = document.getElementById('edit-bio-btn');
+  const editBioModal = document.getElementById('editBioModal');
+  const closeEditBioBtn = document.getElementById('editBioCloseBtn');
+  const editBioError = document.getElementById('editBioError');
+
+  if (editBioBtn && editBioModal && closeEditBioBtn) {
+    // Open modal
+    editBioBtn.addEventListener('click', () => {
+      openModal('editBioModal');
+    });
+
+    // Close modal on close button click
+    closeEditBioBtn.addEventListener('click', () => {
+      closeModal('editBioModal');
+    });
+
+    // Close modal when clicking outside content
+    editBioModal.addEventListener('click', (e) => {
+      if (e.target === editBioModal) {
+        closeModal('editBioModal');
+      }
+    });
+  }
+
+  // BIO EDIT FORM VALIDATION
+
+  const editBioForm = document.getElementById('editBioForm');
+
+  editBioForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    editBioError.style.display = 'none';
+
+    const formData = new URLSearchParams(new FormData(editBioForm));
+
+    try {
+      const response = await fetch('/dashboard/bio', {
+        method: 'PATCH',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.violation) {
+        window.location.href = '/error';
+        return;
+      }
+
+      if (data.error) {
+        editBioError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
 });

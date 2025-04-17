@@ -66,13 +66,11 @@
           <section class="dashboard__about">
             <div class="dashboard__section-header">
               <h2 class="dashboard__section-title">À propos de moi</h2>
-              <button
-              class="dashboard__edit-btn"
-              aria-label="Modifier la section À propos de moi"
-              data-modal-target="about"
-              >
-                Modifier
-              </button>
+              <div class="dashboard__section-edit">
+                <button class="dashboard__edit-btn secondary-button" id="edit-bio-btn" aria-label="Modifier ma bio">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              </div>
             </div>
 
             <% if (user.bio ) { %>
@@ -127,6 +125,7 @@
       
       <%- include('../partials/footer') %>
       <%- include('../partials/dashboard/editUserInfoModal') %>
+      <%- include('../partials/dashboard/editBioModal') %>
   </body>
 </html>
     

@@ -26,4 +26,8 @@ const editUserSchema = Joi.object({
   location: Joi.string().required(),
 });
 
-export { searchSkillSchema, loginSchema, registerSchema, editUserSchema };
+const editBioSchema = Joi.object({
+  bio: Joi.string().allow('').max(1500),
+});
+
+export { searchSkillSchema, loginSchema, registerSchema, editUserSchema, editBioSchema };

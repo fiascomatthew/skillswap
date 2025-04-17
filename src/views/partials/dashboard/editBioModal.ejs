@@ -1,0 +1,24 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="editBioModal">
+  <div class="modal__content">
+    <button class="modal__close-button" id="editBioCloseBtn">
+      <i class="modal_close-icon fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">Modifier ma bio</h2>
+      <p class="modal__subtitle"></p>
+    </div>
+
+    <form class="modal__form" id="editBioForm">
+      <div class="modal__wrapper">
+        <label for="editBio" class="modal__label">Bio</label>
+        <textarea id="editBioTextarea" name="bio" class="modal__input modal__textarea" rows="5"><%= user.bio || '' %></textarea>
+      </div>
+
+      <p class="modal__global-error" id="editBioError">La bio doit être de type texte et ne doit pas dépasser 1500 caractères. Merci de réessayer.</p>
+
+      <button type="submit" class="modal__submit-button call-to-action">Mettre à jour</button>
+    </form>
+  </div>
+</div>
