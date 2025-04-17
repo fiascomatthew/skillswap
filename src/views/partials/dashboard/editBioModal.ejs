@@ -13,11 +13,10 @@
     <form class="modal__form" id="editBioForm">
       <div class="modal__wrapper">
         <label for="editBio" class="modal__label">Bio</label>
-        <textarea id="editBioTextarea" name="bio" class="modal__input modal__textarea" rows="5"><%= user.bio %></textarea>
-        <p class="modal__error" id="editBioError">La bio ne doit pas dépasser 1000 caractères.</p>
+        <textarea id="editBioTextarea" name="bio" class="modal__input modal__textarea" rows="5"><%= user.bio || '' %></textarea>
       </div>
 
-      <p class="modal__global-error" id="editBioError">Une erreur est survenue. Merci de réessayer.</p>
+      <p class="modal__global-error" id="editBioError">La bio doit être de type texte et ne doit pas dépasser 1500 caractères. Merci de réessayer.</p>
 
       <button type="submit" class="modal__submit-button call-to-action">Mettre à jour</button>
     </form>

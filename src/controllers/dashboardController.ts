@@ -73,16 +73,15 @@ export const dashboardController = {
     } = editBioSchema.validate(req.body);
 
     if (error) {
-      console.log(error);
       return res.status(500).json({
-        violation: true,
+        error: true,
+        message: "Erreur lors de la mise à jour de la bio de l'utilisateur.",
       });
     }
 
     try {
       await User.update({ bio }, { where: { id: userId } });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         error: true,
         message: "Erreur lors de la mise à jour de la bio de l'utilisateur.",

@@ -139,54 +139,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   editBioForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission
-    let isValid = true;
-
-    // Reset previous errors only inside the editBioForm
-    for (const error of editBioForm.querySelectorAll('.modal__error')) {
-      error.style.display = 'none';
-    }
 
     editBioError.style.display = 'none';
 
-    // Validate inputs only inside the editBioForm
-    for (const input of editBioForm.querySelectorAll('.modal__input')) {
-      const error = document.getElementById(`${input.id}Error`);
-      if (!input.value) {
-        error.style.display = 'block';
-        isValid = false;
-      }
-    }
+    const formData = new URLSearchParams(new FormData(editBioForm));
 
-    if (isValid) {
-      const formData = new URLSearchParams(new FormData(editBioForm));
+    try {
+      const response = await fetch('/dashboard/bio', {
+        method: 'PATCH',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
 
-      try {
-        const response = await fetch('/dashboard/bio', {
-          method: 'PATCH',
-          body: formData,
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        });
+      const data = await response.json();
 
-        const data = await response.json();
-
-        if (data.violation) {
-          window.location.href = '/error';
-          return;
-        }
-
-        if (data.error) {
-          // Display the general error
-          editBioError.style.display = 'block';
-          return;
-        }
-
-        // Redirect on successful update
-        window.location.href = '/dashboard';
-      } catch (err) {
+      if (data.violation) {
         window.location.href = '/error';
+        return;
       }
+
+      if (data.error) {
+        editBioError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
     }
   });
 });
