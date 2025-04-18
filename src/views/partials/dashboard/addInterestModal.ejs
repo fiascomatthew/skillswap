@@ -1,0 +1,28 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="addInterestModal">
+  <div class="modal__content">
+    <button class="modal__close-button" id="addInterestCloseBtn">
+      <i class="modal_close-icon fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">Ajouter un intérêt</h2>
+      <p class="modal__subtitle"></p>
+    </div>
+
+    <form class="modal__form" id="addInterestForm">
+      <div class="modal__wrapper">
+        <label for="addInterest" class="modal__label">Choisis un intérêt :</label>
+        <select name="interest" id="addInterest" class="modal__input">
+          <% skills.forEach(skill => { %>
+            <option value="<%= skill.id %>"><%= skill.description %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <p class="modal__global-error" id="addInterestError">Une erreur est survenue. Merci de réessayer.</p>
+
+      <button type="submit" class="modal__submit-button call-to-action">Ajouter</button>
+    </form>
+  </div>
+</div>

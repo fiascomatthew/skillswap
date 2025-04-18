@@ -8,6 +8,7 @@ import {
   Validate,
   BelongsToMany,
 } from 'sequelize-typescript';
+import type { SkillModel } from './Skill';
 
 @Table({
   tableName: 'user',
