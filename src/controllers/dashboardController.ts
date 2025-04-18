@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
-import { User } from '../models';
+import { Skill, User } from '../models';
 import HttpError from '../errors/HttpError';
-import { editUserSchema, editBioSchema } from '../utils/validationSchemas';
+import { editUserSchema, editBioSchema, addInterestSchema } from '../utils/validationSchemas';
 
 export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {
@@ -25,7 +25,9 @@ export const dashboardController = {
       return next(new HttpError('Utilisateur introuvable', 404));
     }
 
-    return res.render('pages/dashboard', { user });
+    const skills = await Skill.findAll({ order: [['description', 'ASC']] });
+
+    return res.render('pages/dashboard', { user, skills });
   },
 
   async editUser(req: Request, res: Response, next: NextFunction) {
@@ -41,7 +43,6 @@ export const dashboardController = {
     } = editUserSchema.validate(req.body);
 
     if (error) {
-      console.log(error);
       return res.status(500).json({
         violation: true,
       });
@@ -50,7 +51,6 @@ export const dashboardController = {
     try {
       await User.update({ firstname, lastname, email, location }, { where: { id: userId } });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         error: true,
         message: "Erreur lors de la mise à jour de l'utilisateur.",
@@ -88,6 +88,67 @@ export const dashboardController = {
       });
     }
 
-    return res.status(200).json({ error: false, message: 'Mise à jour de la bio réussie' });
+    return res.status(200).json({ error: false, message: 'Bio mise à jour' });
+  },
+
+  async addInterest(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
+    if (!userId) {
+      return next(new HttpError('Utilisateur non connecté', 401));
+    }
+
+    const {
+      value: { interestId },
+      error,
+    } = addInterestSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de l'ajout de l'intérêt'.",
+      });
+    }
+
+    try {
+      // Check if the interest exists
+      const interest = await Skill.findByPk(interestId);
+      if (!interest) {
+        return res.status(500).json({
+          error: true,
+          message: 'Compétence introuvable',
+        });
+      }
+
+      // Check if the user exists
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(500).json({
+          error: true,
+          message: 'Utilisateur introuvable',
+        });
+      }
+
+      // Check if the user already has this skill as an interest
+      const existingInterests = await user.$get('interests', {
+        where: { id: interestId },
+      });
+
+      if (existingInterests.length > 0) {
+        return res.status(500).json({
+          error: true,
+          message: 'Vous avez déjà cette compétence',
+        });
+      }
+      // Add the skill to the user's interests
+      await user.$add('interests', interest, { through: { priority: 1 } });
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de l'ajout de l'intérêt",
+      });
+    }
+
+    return res.status(200).json({ error: false, message: 'Intérêt ajouté' });
   },
 };
