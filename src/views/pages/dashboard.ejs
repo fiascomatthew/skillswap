@@ -25,7 +25,7 @@
           <div class="dashboard__user">
             <div class="user__edit">
               <button class="dashboard__edit-btn secondary-button" id="edit-user-btn" aria-label="Modifier mon profil">
-                <i class="fa-solid fa-pen"></i>
+                <i class="fa-solid fa-square-pen"></i>
               </button>
             </div>
             <img
@@ -68,7 +68,7 @@
               <h2 class="dashboard__section-title">À propos de moi</h2>
               <div class="dashboard__section-edit">
                 <button class="dashboard__edit-btn secondary-button" id="edit-bio-btn" aria-label="Modifier ma bio">
-                  <i class="fa-solid fa-pen"></i>
+                  <i class="fa-solid fa-square-pen"></i>
                 </button>
               </div>
             </div>
@@ -94,7 +94,7 @@
           </div>
           <ul class="dashboard__tag-list">
             <% user.skills.forEach(skill => { %>
-              <li class="dashboard__tag"><%= skill.name %></li>
+              <li class="dashboard__tag"><%= skill.description %></li>
               <% }) %>
             </ul>
           </section>
@@ -103,17 +103,13 @@
           <section class="dashboard__interests">
             <div class="dashboard__section-header">
               <h2 class="dashboard__section-title">Mes intérêts</h2>
-              <button
-              class="dashboard__edit-btn"
-              aria-label="Modifier mes intérêts"
-              data-modal-target="interests"
-              >
-                Modifier
+              <button class="dashboard__edit-btn secondary-button" id="add-interest-btn" aria-label="Ajouter un intérêt">
+                <i class="fa-solid fa-square-plus"></i>
               </button>
             </div>
             <ul class="dashboard__tag-list">
               <% user.interests.forEach(interest => { %>
-                <li class="dashboard__tag"><%= interest.name %></li>
+                <li class="dashboard__tag"><%= interest.description %></li>
               <% }) %>
             </ul>
           </section>
@@ -126,6 +122,7 @@
       <%- include('../partials/footer') %>
       <%- include('../partials/dashboard/editUserInfoModal') %>
       <%- include('../partials/dashboard/editBioModal') %>
+      <%- include('../partials/dashboard/addInterestModal') %>
   </body>
 </html>
     
