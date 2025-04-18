@@ -228,4 +228,66 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '/error';
     }
   });
+
+  // ADD SKILL FORM MODAL
+
+  const addSkillBtn = document.getElementById('add-skill-btn');
+  const addSkillModal = document.getElementById('addSkillModal');
+  const closeaddSkillBtn = document.getElementById('addSkillCloseBtn');
+  const addSkillError = document.getElementById('addSkillError');
+
+  if (addSkillBtn && addSkillModal && closeaddSkillBtn) {
+    // Open modal
+    addSkillBtn.addEventListener('click', () => {
+      openModal('addSkillModal');
+    });
+
+    // Close modal on close button click
+    closeaddSkillBtn.addEventListener('click', () => {
+      closeModal('addSkillModal');
+    });
+
+    // Close modal when clicking outside content
+    addSkillModal.addEventListener('click', (e) => {
+      if (e.target === addSkillModal) {
+        closeModal('addSkillModal');
+      }
+    });
+  }
+
+  // ADD SKILL FORM VALIDATION
+
+  const addSkillForm = document.getElementById('addSkillForm');
+  const addSkillSelect = document.getElementById('addSkill');
+
+  addSkillForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    addSkillError.style.display = 'none';
+
+    const skillId = addSkillSelect.value;
+
+    try {
+      const response = await fetch('/dashboard/skill', {
+        method: 'POST',
+        body: `skillId=${encodeURIComponent(skillId)}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        addSkillError.textContent = data.message || 'Une erreur est survenue.';
+        addSkillError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
 });
