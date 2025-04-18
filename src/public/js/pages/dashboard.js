@@ -166,4 +166,66 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '/error';
     }
   });
+
+  // ADD INTEREST FORM MODAL
+
+  const addInterestBtn = document.getElementById('add-interest-btn');
+  const addInterestModal = document.getElementById('addInterestModal');
+  const closeaddInterestBtn = document.getElementById('addInterestCloseBtn');
+  const addInterestError = document.getElementById('addInterestError');
+
+  if (addInterestBtn && addInterestModal && closeaddInterestBtn) {
+    // Open modal
+    addInterestBtn.addEventListener('click', () => {
+      openModal('addInterestModal');
+    });
+
+    // Close modal on close button click
+    closeaddInterestBtn.addEventListener('click', () => {
+      closeModal('addInterestModal');
+    });
+
+    // Close modal when clicking outside content
+    addInterestModal.addEventListener('click', (e) => {
+      if (e.target === addInterestModal) {
+        closeModal('addInterestModal');
+      }
+    });
+  }
+
+  // ADD INTEREST FORM VALIDATION
+
+  const addInterestForm = document.getElementById('addInterestForm');
+  const addInterestSelect = document.getElementById('addInterest');
+
+  addInterestForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    addInterestError.style.display = 'none';
+
+    const interestId = addInterestSelect.value;
+
+    try {
+      const response = await fetch('/dashboard/interest', {
+        method: 'POST',
+        body: `interestId=${encodeURIComponent(interestId)}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data.error) {
+        addInterestError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
 });
