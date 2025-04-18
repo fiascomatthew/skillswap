@@ -1,7 +1,12 @@
 import type { NextFunction, Request, Response } from 'express';
 import { Skill, User } from '../models';
 import HttpError from '../errors/HttpError';
-import { editUserSchema, editBioSchema, addInterestSchema } from '../utils/validationSchemas';
+import {
+  editUserSchema,
+  editBioSchema,
+  addInterestSchema,
+  addSkillSchema,
+} from '../utils/validationSchemas';
 
 export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {
@@ -140,6 +145,7 @@ export const dashboardController = {
           message: 'Vous avez déjà cette compétence',
         });
       }
+
       // Add the skill to the user's interests
       await user.$add('interests', interest, { through: { priority: 1 } });
     } catch (error) {
@@ -162,9 +168,10 @@ export const dashboardController = {
     const {
       value: { skillId },
       error,
-    } = addInterestSchema.validate(req.body);
+    } = addSkillSchema.validate(req.body);
 
     if (error) {
+      console.log(error);
       return res.status(500).json({
         error: true,
         message: "Erreur lors de l'ajout de la compétence.",
@@ -190,7 +197,7 @@ export const dashboardController = {
         });
       }
 
-      // Check if the user already has this skill as an interest
+      // Check if the user already has this skill
       const existingSkills = await user.$get('skills', {
         where: { id: skillId },
       });
