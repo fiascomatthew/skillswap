@@ -215,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (data.error) {
+        addInterestError.textContent = data.message || 'Une erreur est survenue.';
         addInterestError.style.display = 'block';
         return;
       }
