@@ -84,13 +84,9 @@
           <section class="dashboard__skills">
             <div class="dashboard__section-header">
               <h2 class="dashboard__section-title">Mes compétences</h2>
-              <button
-              class="dashboard__edit-btn"
-              aria-label="Modifier mes compétences"
-              data-modal-target="skills"
-              >
-              Modifier
-            </button>
+              <button class="dashboard__edit-btn secondary-button" id="add-skill-btn" aria-label="Ajouter une compétence">
+                <i class="fa-solid fa-square-plus"></i>
+              </button>
           </div>
           <ul class="dashboard__tag-list">
             <% user.skills.forEach(skill => { %>
