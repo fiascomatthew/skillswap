@@ -34,6 +34,10 @@ const addInterestSchema = Joi.object({
   interestId: Joi.number().integer().positive().required(),
 });
 
+const addSkillSchema = Joi.object({
+  skillId: Joi.number().integer().positive().required(),
+});
+
 export {
   searchSkillSchema,
   loginSchema,
@@ -41,4 +45,5 @@ export {
   editUserSchema,
   editBioSchema,
   addInterestSchema,
+  addSkillSchema,
 };

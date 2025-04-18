@@ -106,7 +106,7 @@ export const dashboardController = {
     if (error) {
       return res.status(500).json({
         error: true,
-        message: "Erreur lors de l'ajout de l'intérêt'.",
+        message: "Erreur lors de l'ajout de l'intérêt.",
       });
     }
 
@@ -150,5 +150,66 @@ export const dashboardController = {
     }
 
     return res.status(200).json({ error: false, message: 'Intérêt ajouté' });
+  },
+
+  async addSkill(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
+    if (!userId) {
+      return next(new HttpError('Utilisateur non connecté', 401));
+    }
+
+    const {
+      value: { skillId },
+      error,
+    } = addInterestSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de l'ajout de la compétence.",
+      });
+    }
+
+    try {
+      // Check if the skill exists
+      const skill = await Skill.findByPk(skillId);
+      if (!skill) {
+        return res.status(500).json({
+          error: true,
+          message: 'Compétence introuvable',
+        });
+      }
+
+      // Check if the user exists
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(500).json({
+          error: true,
+          message: 'Utilisateur introuvable',
+        });
+      }
+
+      // Check if the user already has this skill as an interest
+      const existingSkills = await user.$get('skills', {
+        where: { id: skillId },
+      });
+
+      if (existingSkills.length > 0) {
+        return res.status(500).json({
+          error: true,
+          message: 'Vous avez déjà cette compétence',
+        });
+      }
+      // Add the skill to the user's skills
+      await user.$add('skills', skill, { through: { priority: 1 } });
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de l'ajout de la compétence",
+      });
+    }
+
+    return res.status(200).json({ error: false, message: 'Compétence ajoutée' });
   },
 };
