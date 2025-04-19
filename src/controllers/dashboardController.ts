@@ -4,8 +4,8 @@ import HttpError from '../errors/HttpError';
 import {
   editUserSchema,
   editBioSchema,
-  addInterestSchema,
-  addSkillSchema,
+  interestSchema,
+  skillSchema,
 } from '../utils/validationSchemas';
 
 export const dashboardController = {
@@ -106,7 +106,7 @@ export const dashboardController = {
     const {
       value: { interestId },
       error,
-    } = addInterestSchema.validate(req.body);
+    } = interestSchema.validate(req.body);
 
     if (error) {
       return res.status(500).json({
@@ -218,5 +218,67 @@ export const dashboardController = {
     }
 
     return res.status(200).json({ error: false, message: 'Compétence ajoutée' });
+  },
+
+  async removeInterest(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
+    if (!userId) {
+      return next(new HttpError('Utilisateur non connecté', 401));
+    }
+
+    const {
+      value: { interestId },
+      error,
+    } = interestSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de la suppression de l'intérêt.",
+      });
+    }
+
+    try {
+      // Check if the user exists
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(500).json({
+          error: true,
+          message: 'Utilisateur introuvable',
+        });
+      }
+
+      // Check if the interest exists
+      const interest = await Skill.findByPk(interestId);
+      if (!interest) {
+        return res.status(500).json({
+          error: true,
+          message: 'Compétence introuvable',
+        });
+      }
+
+      // Check if the user has this interest
+      const existingInterests = await user.$get('interests', {
+        where: { id: interestId },
+      });
+
+      if (existingInterests.length === 0) {
+        return res.status(500).json({
+          error: true,
+          message: "Vous n'avez pas cette intérêt",
+        });
+      }
+
+      // Remove the skill from the user's interests
+      await user.$remove('interests', interest);
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de la suppression de l'intérêt",
+      });
+    }
+
+    return res.status(200).json({ error: false, message: 'Intérêt supprimé' });
   },
 };
