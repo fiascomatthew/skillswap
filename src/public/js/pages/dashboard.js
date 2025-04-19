@@ -290,4 +290,28 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '/error';
     }
   });
+
+  //REMOVE INTEREST FORM MODAL
+  const removeInterestBtn = document.getElementById('remove-interest-btn');
+  const removeInterestModal = document.getElementById('removeInterestModal');
+  const closeremoveInterestBtn = document.getElementById('removeInterestCloseBtn');
+  const removeInterestError = document.getElementById('removeInterestError');
+  if (removeInterestBtn && removeInterestModal && closeremoveInterestBtn) {
+    // Open modal
+    removeInterestBtn.addEventListener('click', () => {
+      openModal('removeInterestModal');
+    });
+
+    // Close modal on close button click
+    closeremoveInterestBtn.addEventListener('click', () => {
+      closeModal('removeInterestModal');
+    });
+
+    // Close modal when clicking outside content
+    removeInterestModal.addEventListener('click', (e) => {
+      if (e.target === removeInterestModal) {
+        closeModal('removeInterestModal');
+      }
+    });
+  }
 });
