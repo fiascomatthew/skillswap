@@ -4,17 +4,13 @@ import HttpError from '../errors/HttpError';
 import {
   editUserSchema,
   editBioSchema,
-  addInterestSchema,
-  addSkillSchema,
+  interestSchema,
+  skillSchema,
 } from '../utils/validationSchemas';
 
 export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const user = await User.findByPk(userId, {
       include: [
@@ -37,10 +33,6 @@ export const dashboardController = {
 
   async editUser(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const {
       value: { firstname, lastname, email, location },
@@ -67,10 +59,6 @@ export const dashboardController = {
 
   async editBio(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const {
       value: { bio },
@@ -99,14 +87,10 @@ export const dashboardController = {
   async addInterest(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
 
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const {
       value: { interestId },
       error,
-    } = addInterestSchema.validate(req.body);
+    } = interestSchema.validate(req.body);
 
     if (error) {
       return res.status(500).json({
@@ -161,17 +145,12 @@ export const dashboardController = {
   async addSkill(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
 
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const {
       value: { skillId },
       error,
-    } = addSkillSchema.validate(req.body);
+    } = skillSchema.validate(req.body);
 
     if (error) {
-      console.log(error);
       return res.status(500).json({
         error: true,
         message: "Erreur lors de l'ajout de la compétence.",
@@ -218,5 +197,121 @@ export const dashboardController = {
     }
 
     return res.status(200).json({ error: false, message: 'Compétence ajoutée' });
+  },
+
+  async removeInterest(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
+    const {
+      value: { interestId },
+      error,
+    } = interestSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de la suppression de l'intérêt.",
+      });
+    }
+
+    try {
+      // Check if the user exists
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(500).json({
+          error: true,
+          message: 'Utilisateur introuvable',
+        });
+      }
+
+      // Check if the interest exists
+      const interest = await Skill.findByPk(interestId);
+      if (!interest) {
+        return res.status(500).json({
+          error: true,
+          message: 'Compétence introuvable',
+        });
+      }
+
+      // Check if the user has this interest
+      const existingInterests = await user.$get('interests', {
+        where: { id: interestId },
+      });
+
+      if (existingInterests.length === 0) {
+        return res.status(500).json({
+          error: true,
+          message: "Vous n'avez pas cette intérêt",
+        });
+      }
+
+      // Remove the skill from the user's interests
+      await user.$remove('interests', interest);
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Erreur lors de la suppression de l'intérêt",
+      });
+    }
+
+    return res.status(200).json({ error: false, message: 'Intérêt supprimé' });
+  },
+
+  async removeSkill(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
+    const {
+      value: { skillId },
+      error,
+    } = skillSchema.validate(req.body);
+
+    if (error) {
+      return res.status(500).json({
+        error: true,
+        message: 'Erreur lors de la suppression de la compétence.',
+      });
+    }
+
+    try {
+      // Check if the user exists
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(500).json({
+          error: true,
+          message: 'Utilisateur introuvable',
+        });
+      }
+
+      // Check if the skill exists
+      const skill = await Skill.findByPk(skillId);
+      if (!skill) {
+        return res.status(500).json({
+          error: true,
+          message: 'Compétence introuvable',
+        });
+      }
+
+      // Check if the user has this skill
+      const existingSkills = await user.$get('skills', {
+        where: { id: skillId },
+      });
+
+      if (existingSkills.length === 0) {
+        return res.status(500).json({
+          error: true,
+          message: "Vous n'avez pas cette compétence",
+        });
+      }
+
+      // Remove the skill from the user's skills
+      await user.$remove('skills', skill);
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: 'Erreur lors de la suppression de la compétence',
+      });
+    }
+
+    return res.status(200).json({ error: false, message: 'Compétence supprimée' });
   },
 };

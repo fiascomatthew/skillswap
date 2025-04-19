@@ -208,9 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/dashboard/interest', {
         method: 'POST',
-        body: `interestId=${encodeURIComponent(interestId)}`,
+        body: JSON.stringify({ interestId }),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
 
@@ -270,9 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/dashboard/skill', {
         method: 'POST',
-        body: `skillId=${encodeURIComponent(skillId)}`,
+        body: JSON.stringify({ skillId }),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
 
@@ -281,6 +281,138 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.error) {
         addSkillError.textContent = data.message || 'Une erreur est survenue.';
         addSkillError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
+
+  //REMOVE INTEREST FORM MODAL
+
+  const removeInterestButtons = document.querySelectorAll('.remove-interest-btn');
+  const removeInterestModal = document.getElementById('removeInterestModal');
+  const closeRemoveInterestBtn = document.getElementById('removeInterestCloseBtn');
+  const removeInterestError = document.getElementById('removeInterestError');
+  const removeInterestInput = document.getElementById('removeInterestInput');
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  removeInterestButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const interestId = button.dataset.interestId;
+      removeInterestInput.value = interestId;
+
+      // Open modal
+      openModal('removeInterestModal');
+    });
+  });
+
+  // Close modal on close button click
+  closeRemoveInterestBtn.addEventListener('click', () => {
+    closeModal('removeInterestModal');
+  });
+
+  // Close modal when clicking outside content
+  removeInterestModal.addEventListener('click', (e) => {
+    if (e.target === removeInterestModal) {
+      closeModal('removeInterestModal');
+    }
+  });
+
+  // REMOVE INTEREST FORM VALIDATION
+
+  const removeInterestForm = document.getElementById('removeInterestForm');
+
+  removeInterestForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    removeInterestError.style.display = 'none';
+
+    const interestId = removeInterestInput.value;
+
+    try {
+      const response = await fetch('/dashboard/interest', {
+        method: 'DELETE',
+        body: JSON.stringify({ interestId }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        removeInterestError.textContent = data.message || 'Une erreur est survenue.';
+        removeInterestError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
+
+  //REMOVE SKILL FORM MODAL
+
+  const removeSkillButtons = document.querySelectorAll('.remove-skill-btn');
+  const removeSkillModal = document.getElementById('removeSkillModal');
+  const closeRemoveSkillBtn = document.getElementById('removeSkillCloseBtn');
+  const removeSkillError = document.getElementById('removeSkillError');
+  const removeSkillInput = document.getElementById('removeSkillInput');
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  removeSkillButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const skillId = button.dataset.skillId;
+      removeSkillInput.value = skillId;
+
+      // Open modal
+      openModal('removeSkillModal');
+    });
+  });
+
+  // Close modal on close button click
+  closeRemoveSkillBtn.addEventListener('click', () => {
+    closeModal('removeSkillModal');
+  });
+
+  // Close modal when clicking outside content
+  removeSkillModal.addEventListener('click', (e) => {
+    if (e.target === removeSkillModal) {
+      closeModal('removeSkillModal');
+    }
+  });
+
+  // REMOVE SKILL FORM VALIDATION
+
+  const removeSkillForm = document.getElementById('removeSkillForm');
+
+  removeSkillForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    removeSkillError.style.display = 'none';
+
+    const skillId = removeSkillInput.value;
+
+    try {
+      const response = await fetch('/dashboard/skill', {
+        method: 'DELETE',
+        body: JSON.stringify({ skillId }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        removeSkillError.textContent = data.message || 'Une erreur est survenue.';
+        removeSkillError.style.display = 'block';
         return;
       }
 

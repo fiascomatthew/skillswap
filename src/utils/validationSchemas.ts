@@ -30,11 +30,11 @@ const editBioSchema = Joi.object({
   bio: Joi.string().allow('').max(1500),
 });
 
-const addInterestSchema = Joi.object({
+const interestSchema = Joi.object({
   interestId: Joi.number().integer().positive().required(),
 });
 
-const addSkillSchema = Joi.object({
+const skillSchema = Joi.object({
   skillId: Joi.number().integer().positive().required(),
 });
 
@@ -44,6 +44,6 @@ export {
   registerSchema,
   editUserSchema,
   editBioSchema,
-  addInterestSchema,
-  addSkillSchema,
+  interestSchema,
+  skillSchema,
 };
