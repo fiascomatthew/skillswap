@@ -123,6 +123,7 @@
 .dashboard__tag-list {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 0;
   margin: 0;
@@ -130,6 +131,7 @@
 }
 
 .dashboard__tag {
+  width: fit-content;
   background-color: var(--darker-color);
   color: var(--text-light-color);
   padding: 0.4rem 0.8rem;
