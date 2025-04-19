@@ -12,10 +12,6 @@ export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
 
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const user = await User.findByPk(userId, {
       include: [
         { association: 'skills' },
@@ -37,10 +33,6 @@ export const dashboardController = {
 
   async editUser(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const {
       value: { firstname, lastname, email, location },
@@ -68,10 +60,6 @@ export const dashboardController = {
   async editBio(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
 
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const {
       value: { bio },
       error,
@@ -98,10 +86,6 @@ export const dashboardController = {
 
   async addInterest(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const {
       value: { interestId },
@@ -161,10 +145,6 @@ export const dashboardController = {
   async addSkill(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
 
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const {
       value: { skillId },
       error,
@@ -220,6 +200,8 @@ export const dashboardController = {
   },
 
   async removeInterest(req: Request, res: Response, next: NextFunction) {
+    const userId = req.session.connectedUser?.id;
+
     const {
       value: { interestId },
       error,
@@ -234,7 +216,7 @@ export const dashboardController = {
 
     try {
       // Check if the user exists
-      const user = await User.findByPk(req.session.connectedUser?.id);
+      const user = await User.findByPk(userId);
       if (!user) {
         return res.status(500).json({
           error: true,
@@ -277,10 +259,6 @@ export const dashboardController = {
 
   async removeSkill(req: Request, res: Response, next: NextFunction) {
     const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
 
     const {
       value: { skillId },
