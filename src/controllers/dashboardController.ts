@@ -171,7 +171,6 @@ export const dashboardController = {
     } = skillSchema.validate(req.body);
 
     if (error) {
-      console.log(error);
       return res.status(500).json({
         error: true,
         message: "Erreur lors de l'ajout de la compétence.",
@@ -221,12 +220,6 @@ export const dashboardController = {
   },
 
   async removeInterest(req: Request, res: Response, next: NextFunction) {
-    const userId = req.session.connectedUser?.id;
-
-    if (!userId) {
-      return next(new HttpError('Utilisateur non connecté', 401));
-    }
-
     const {
       value: { interestId },
       error,
@@ -241,7 +234,7 @@ export const dashboardController = {
 
     try {
       // Check if the user exists
-      const user = await User.findByPk(userId);
+      const user = await User.findByPk(req.session.connectedUser?.id);
       if (!user) {
         return res.status(500).json({
           error: true,

@@ -292,26 +292,68 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   //REMOVE INTEREST FORM MODAL
-  const removeInterestBtn = document.getElementById('remove-interest-btn');
+
+  const removeInterestButtons = document.querySelectorAll('.remove-interest-btn');
   const removeInterestModal = document.getElementById('removeInterestModal');
-  const closeremoveInterestBtn = document.getElementById('removeInterestCloseBtn');
+  const closeRemoveInterestBtn = document.getElementById('removeInterestCloseBtn');
   const removeInterestError = document.getElementById('removeInterestError');
-  if (removeInterestBtn && removeInterestModal && closeremoveInterestBtn) {
-    // Open modal
-    removeInterestBtn.addEventListener('click', () => {
+  const removeInterestInput = document.getElementById('removeInterestInput');
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  removeInterestButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const interestId = button.dataset.interestId;
+      removeInterestInput.value = interestId;
+
+      // Open modal
       openModal('removeInterestModal');
     });
+  });
 
-    // Close modal on close button click
-    closeremoveInterestBtn.addEventListener('click', () => {
+  // Close modal on close button click
+  closeRemoveInterestBtn.addEventListener('click', () => {
+    closeModal('removeInterestModal');
+  });
+
+  // Close modal when clicking outside content
+  removeInterestModal.addEventListener('click', (e) => {
+    if (e.target === removeInterestModal) {
       closeModal('removeInterestModal');
-    });
+    }
+  });
 
-    // Close modal when clicking outside content
-    removeInterestModal.addEventListener('click', (e) => {
-      if (e.target === removeInterestModal) {
-        closeModal('removeInterestModal');
+  // REMOVE INTEREST FORM VALIDATION
+
+  const removeInterestForm = document.getElementById('removeInterestForm');
+
+  removeInterestForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    removeInterestError.style.display = 'none';
+
+    const interestId = removeInterestInput.value;
+
+    try {
+      const response = await fetch('/dashboard/interest', {
+        method: 'DELETE',
+        body: JSON.stringify({ interestId }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        removeInterestError.textContent = data.message || 'Une erreur est survenue.';
+        removeInterestError.style.display = 'block';
+        return;
       }
-    });
-  }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
 });
