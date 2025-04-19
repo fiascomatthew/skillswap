@@ -208,9 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/dashboard/interest', {
         method: 'POST',
-        body: `interestId=${encodeURIComponent(interestId)}`,
+        body: JSON.stringify({ interestId }),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
 
@@ -270,9 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/dashboard/skill', {
         method: 'POST',
-        body: `skillId=${encodeURIComponent(skillId)}`,
+        body: JSON.stringify({ skillId }),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
 
