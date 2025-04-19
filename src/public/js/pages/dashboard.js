@@ -356,4 +356,70 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '/error';
     }
   });
+
+  //REMOVE SKILL FORM MODAL
+
+  const removeSkillButtons = document.querySelectorAll('.remove-skill-btn');
+  const removeSkillModal = document.getElementById('removeSkillModal');
+  const closeRemoveSkillBtn = document.getElementById('removeSkillCloseBtn');
+  const removeSkillError = document.getElementById('removeSkillError');
+  const removeSkillInput = document.getElementById('removeSkillInput');
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  removeSkillButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const skillId = button.dataset.skillId;
+      removeSkillInput.value = skillId;
+
+      // Open modal
+      openModal('removeSkillModal');
+    });
+  });
+
+  // Close modal on close button click
+  closeRemoveSkillBtn.addEventListener('click', () => {
+    closeModal('removeSkillModal');
+  });
+
+  // Close modal when clicking outside content
+  removeSkillModal.addEventListener('click', (e) => {
+    if (e.target === removeSkillModal) {
+      closeModal('removeSkillModal');
+    }
+  });
+
+  // REMOVE SKILL FORM VALIDATION
+
+  const removeSkillForm = document.getElementById('removeSkillForm');
+
+  removeSkillForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    removeSkillError.style.display = 'none';
+
+    const skillId = removeSkillInput.value;
+
+    try {
+      const response = await fetch('/dashboard/skill', {
+        method: 'DELETE',
+        body: JSON.stringify({ skillId }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        removeSkillError.textContent = data.message || 'Une erreur est survenue.';
+        removeSkillError.style.display = 'block';
+        return;
+      }
+
+      // Redirect on successful update
+      window.location.href = '/dashboard';
+    } catch (err) {
+      window.location.href = '/error';
+    }
+  });
 });

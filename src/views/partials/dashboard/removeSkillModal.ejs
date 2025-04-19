@@ -1,0 +1,23 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="removeSkillModal">
+  <div class="modal__content">
+    <button class="modal__close-button" id="removeSkillCloseBtn">
+      <i class="modal_close-icon fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">Supprimer cette compétence ?</h2>
+      <p class="modal__subtitle"></p>
+    </div>
+
+    <form class="modal__form" id="removeSkillForm">
+      <div class="modal__wrapper">
+        <input type="hidden" name="skillId" id="removeSkillInput" value="">
+      </div>
+
+      <p class="modal__global-error" id="removeSkillError"></p>
+
+      <button type="submit" class="modal__submit-button call-to-action">Oui, supprimer</button>
+    </form>
+  </div>
+</div>

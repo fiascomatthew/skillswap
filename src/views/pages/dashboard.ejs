@@ -92,7 +92,7 @@
               <% user.skills.forEach(skill => { %>
                 <div class="dashboard__tag-container">
                   <li class="dashboard__tag"><%= skill.description %></li>
-                  <button class="dashboard__edit-btn remove-skill-btn secondary-button" aria-label="Supprimer une compétence">
+                  <button class="dashboard__edit-btn remove-skill-btn secondary-button" data-skill-id="<%= skill.id %>" aria-label="Supprimer une compétence">
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </div>
@@ -129,6 +129,7 @@
       <%- include('../partials/dashboard/editUserInfoModal') %>
       <%- include('../partials/dashboard/editBioModal') %>
       <%- include('../partials/dashboard/addSkillModal') %>
+      <%- include('../partials/dashboard/removeSkillModal') %>
       <%- include('../partials/dashboard/addInterestModal') %>
       <%- include('../partials/dashboard/removeInterestModal') %>
   </body>
