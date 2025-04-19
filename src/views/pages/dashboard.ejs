@@ -87,10 +87,15 @@
               <button class="dashboard__edit-btn secondary-button" id="add-skill-btn" aria-label="Ajouter une compétence">
                 <i class="fa-solid fa-square-plus"></i>
               </button>
-          </div>
-          <ul class="dashboard__tag-list">
-            <% user.skills.forEach(skill => { %>
-              <li class="dashboard__tag"><%= skill.description %></li>
+            </div>
+            <ul class="dashboard__tag-list">
+              <% user.skills.forEach(skill => { %>
+                <div class="dashboard__tag-container">
+                  <li class="dashboard__tag"><%= skill.description %></li>
+                  <button class="dashboard__edit-btn secondary-button" id="delete-skill-btn" aria-label="Supprimer une compétence">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               <% }) %>
             </ul>
           </section>
@@ -105,7 +110,12 @@
             </div>
             <ul class="dashboard__tag-list">
               <% user.interests.forEach(interest => { %>
-                <li class="dashboard__tag"><%= interest.description %></li>
+                <div class="dashboard__tag-container">
+                  <li class="dashboard__tag"><%= interest.description %></li>
+                  <button class="dashboard__edit-btn secondary-button" id="delete-interest-btn" aria-label="Supprimer un intérêt">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               <% }) %>
             </ul>
           </section>

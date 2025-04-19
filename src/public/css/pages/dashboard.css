@@ -130,6 +130,11 @@
   list-style: none;
 }
 
+.dashboard__tag-container {
+  display: flex;
+  gap: 1rem;
+}
+
 .dashboard__tag {
   width: fit-content;
   background-color: var(--darker-color);
