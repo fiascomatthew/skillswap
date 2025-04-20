@@ -17,8 +17,9 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install --omit=dev
-RUN ls /app
-RUN ls /app
+RUN ls /app/public
+RUN ls /app/views
+RUN ls /app/.env
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/views ./views
