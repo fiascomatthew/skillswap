@@ -2,7 +2,7 @@
 
 FROM node:18 AS builder
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN npm install
@@ -17,11 +17,13 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install --omit=dev
+RUN ls /app
+RUN ls /usr/src/app
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/views ./views
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.env .env
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/views ./views
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/.env .env
 
 ENV NODE_ENV=production
 
