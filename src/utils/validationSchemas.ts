@@ -19,4 +19,31 @@ const registerSchema = Joi.object({
   terms: Joi.boolean().truthy('on').falsy('off').required(),
 });
 
-export { searchSkillSchema, loginSchema, registerSchema };
+const editUserSchema = Joi.object({
+  firstname: Joi.string().required(),
+  lastname: Joi.string().required(),
+  email: Joi.string().email().required(),
+  location: Joi.string().required(),
+});
+
+const editBioSchema = Joi.object({
+  bio: Joi.string().allow('').max(1500),
+});
+
+const interestSchema = Joi.object({
+  interestId: Joi.number().integer().positive().required(),
+});
+
+const skillSchema = Joi.object({
+  skillId: Joi.number().integer().positive().required(),
+});
+
+export {
+  searchSkillSchema,
+  loginSchema,
+  registerSchema,
+  editUserSchema,
+  editBioSchema,
+  interestSchema,
+  skillSchema,
+};

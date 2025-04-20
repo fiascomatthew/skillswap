@@ -1,0 +1,23 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="removeInterestModal">
+  <div class="modal__content">
+    <button class="modal__close-button" id="removeInterestCloseBtn">
+      <i class="modal_close-icon fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">Supprimer cet intérêt ?</h2>
+      <p class="modal__subtitle"></p>
+    </div>
+
+    <form class="modal__form" id="removeInterestForm">
+      <div class="modal__wrapper">
+        <input type="hidden" name="interestId" id="removeInterestInput" value="">
+      </div>
+
+      <p class="modal__global-error" id="removeInterestError"></p>
+
+      <button type="submit" class="modal__submit-button call-to-action">Oui, supprimer</button>
+    </form>
+  </div>
+</div>

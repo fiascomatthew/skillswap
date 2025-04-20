@@ -5,6 +5,7 @@ import { catchErrors } from '../middlewares/catchErrors';
 import { getHomePage, getSkillsSearch } from '../controllers/mainController';
 import { isAuthorized } from '../middlewares/isAuthorized';
 import { sanitizeInputs } from '../middlewares/sanitizeInputs';
+import { dashboardController } from '../controllers/dashboardController';
 
 const router = Router();
 
@@ -17,7 +18,22 @@ router.get('/register', catchErrors(authController.getRegisterPage));
 router.post('/login', sanitizeInputs, catchErrors(authController.login));
 router.post('/register', sanitizeInputs, catchErrors(authController.register));
 
+router.get('/logout', catchErrors(authController.logout));
+
 router.get('/users/:id(\\d+)', isAuthorized, catchErrors(userController.show));
+router.post(
+  '/users/:id(\\d+)/toggle-follow',
+  isAuthorized,
+  catchErrors(userController.toggleFollow),
+);
+
+router.get('/dashboard', isAuthorized, catchErrors(dashboardController.show));
+router.patch('/dashboard/user', isAuthorized, catchErrors(dashboardController.editUser));
+router.patch('/dashboard/bio', isAuthorized, catchErrors(dashboardController.editBio));
+router.post('/dashboard/interest', isAuthorized, catchErrors(dashboardController.addInterest));
+router.delete('/dashboard/interest', isAuthorized, catchErrors(dashboardController.removeInterest));
+router.post('/dashboard/skill', isAuthorized, catchErrors(dashboardController.addSkill));
+router.delete('/dashboard/skill', isAuthorized, catchErrors(dashboardController.removeSkill));
 
 router.get('/error', (req: Request, res: Response) => {
   res.render('pages/error', { message: 'Une erreur est survenue' });

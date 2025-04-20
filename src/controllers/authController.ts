@@ -64,6 +64,18 @@ export const authController = {
     return res.status(200).json({ error: false, message: 'Connexion réussie' });
   },
 
+  async logout(req: Request, res: Response) {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({
+          error: true,
+          message: 'Erreur lors de la déconnexion.',
+        });
+      }
+    });
+    return res.redirect('/');
+  },
+
   async register(req: Request, res: Response) {
     const {
       value: { firstname, lastname, email, password, confirmPassword, location },
@@ -71,7 +83,6 @@ export const authController = {
     } = registerSchema.validate(req.body);
 
     if (error) {
-      console.log(error);
       return res.status(500).json({
         violation: true,
       });

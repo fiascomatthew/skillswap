@@ -66,6 +66,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Configure request body parsing
 app.use(express.urlencoded({ extended: false }));
 
+// Configure JSON parsing
+app.use(express.json());
+
 // Configure session
 app.use(
   session({

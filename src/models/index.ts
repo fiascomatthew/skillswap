@@ -23,10 +23,7 @@ export class User extends UserModel {
     'interest_id',
   )
   interests?: Skill[];
-  @BelongsToMany(() => User, 'user_has_follower', 'user_id', 'follower_id')
-  followers?: User[];
-  @BelongsToMany(() => User, 'user_has_follower', 'follower_id', 'user_id')
-  following?: User[];
+
   @HasMany(() => ReviewModel, 'reviewee_id')
   reviewsReceived?: ReviewModel[];
   @HasMany(() => ReviewModel, 'reviewer_id')

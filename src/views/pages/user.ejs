@@ -37,10 +37,19 @@
           </section>
 
           <!-- User Actions -->
-          <section class="user__actions">
-            <button class="user__button--follow small-call-to-action"> Suivre </button>
-            <button class="user__button--contact secondary-button"> Contacter </button>
-          </section>
+          <% if (!isSelf) { %>
+            <section class="user__actions">
+              <form action="/users/<%= user.id %>/toggle-follow" method="POST" class="user__follow-form">
+                <button type="submit" class="user__button--toggle-follow small-call-to-action"> 
+                  <%= isFollowing ? 'Ne plus suivre' : 'Suivre' %>
+                </button>
+              </form>
+              <button class="user__button--contact secondary-button"> Contacter </button>
+            </section>
+          <% } %>
+
+          <!-- Error message -->
+          <p class="user__error-message app-error-message"></p>
     
           <!-- Skills List -->
           <section class="user__subsection">
@@ -94,7 +103,6 @@
             <% } else { %>
               <p class="user__no-about"><%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) %> n'a pas encore renseigné sa bio.</p>
             <% } %>
-
           </div>
 
           <!-- Availabilities Tab Content -->

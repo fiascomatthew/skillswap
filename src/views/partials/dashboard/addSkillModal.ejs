@@ -1,0 +1,28 @@
+<!-- Modal Overlay -->
+<div class="modal modal--overlay" id="addSkillModal">
+  <div class="modal__content">
+    <button class="modal__close-button" id="addSkillCloseBtn">
+      <i class="modal_close-icon fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">Ajouter une compétence</h2>
+      <p class="modal__subtitle"></p>
+    </div>
+
+    <form class="modal__form" id="addSkillForm">
+      <div class="modal__wrapper">
+        <label for="addSkill" class="modal__label">Choisis une compétence :</label>
+        <select name="Skill" id="addSkill" class="modal__input">
+          <% skills.forEach(skill => { %>
+            <option value="<%= skill.id %>"><%= skill.description %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <p class="modal__global-error" id="addSkillError"></p>
+
+      <button type="submit" class="modal__submit-button call-to-action">Ajouter</button>
+    </form>
+  </div>
+</div>

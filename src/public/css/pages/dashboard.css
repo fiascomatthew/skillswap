@@ -1,0 +1,162 @@
+/* === Dashboard Container === */
+.dashboard__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1300px;
+  margin: 2rem auto 4rem;
+}
+
+/* === Dashboard Header (Profile Info + Stats) === */
+.dashboard__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+.dashboard__user {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.user__edit {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+}
+
+.dashboard__edit-btn {
+  font-size: 1.4rem;
+}
+
+.user__avatar {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.user__name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--text-dark-color);
+}
+
+.user__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-neutral-color);
+}
+
+.user__email {
+  color: var(--text-neutral-color);
+}
+
+/* === Statistics Section (Followers / Following / Skills) === */
+.dashboard__statistics {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 400px;
+  padding-top: 1rem;
+}
+
+.dashboard__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-dark-color);
+}
+
+.dashboard__stat strong {
+  font-size: 1.1rem;
+}
+
+/* === Dashboard Content === */
+.dashboard__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  background: var(--lighter-color);
+  border-radius: 0.7rem;
+}
+
+/* === Subsections (About, Skills, Interests) === */
+.dashboard__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dashboard__section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark-color);
+}
+
+.dashboard__text {
+  font-size: 0.95rem;
+  color: var(--text-dark-color);
+  line-height: 1.5;
+}
+
+/* === Tag Lists (Skills & Interests) === */
+.dashboard__tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dashboard__tag-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboard__tag {
+  width: fit-content;
+  background-color: var(--darker-color);
+  color: var(--text-light-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 0.85rem;
+}
+
+/* === Responsive Layout === */
+@media (min-width: 769px) {
+  .dashboard__container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .dashboard__header {
+    width: 35%;
+    min-width: 370px;
+  }
+
+  .dashboard__content {
+    flex-grow: 1;
+  }
+}
