@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app: Express = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const sessionSecret: string = process.env.SESSION_SECRET as string;
 const environment: string = process.env.NODE_ENV as string;

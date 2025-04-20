@@ -1,20 +1,30 @@
-# Utiliser une image de base officielle de Node.js
-FROM node:18
+# Dockerfile production pour Railway
 
-# Définir le répertoire de travail dans le conteneur
-WORKDIR /usr/src/app
+FROM node:18 AS builder
 
-# Copier les fichiers package.json et package-lock.json
+WORKDIR /app
+
 COPY package*.json ./
-
-# Installer les dépendances
 RUN npm install
 
-# Copier le reste des fichiers de l'application
 COPY . .
+RUN npm run build
 
-# Exposer le port sur lequel l'application va tourner
+# Etape finale : Production
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/views ./views
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.env .env
+
+ENV NODE_ENV=production
+
 EXPOSE 3000
 
-# Démarrer l'application en mode développement
-CMD ["npm", "run", "dev"]
+CMD ["node", "dist/index.js"]
