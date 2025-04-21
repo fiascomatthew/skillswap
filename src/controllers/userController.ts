@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-import { User } from '../models';
-import HttpError from '../errors/HttpError';
+import { User } from '../models/index.js';
+import HttpError from '../errors/HttpError.js';
 
 export const userController = {
   async show(req: Request, res: Response, next: NextFunction) {
