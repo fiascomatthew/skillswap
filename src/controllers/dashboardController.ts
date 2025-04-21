@@ -1,12 +1,12 @@
 import type { NextFunction, Request, Response } from 'express';
-import { Skill, User } from '../models';
-import HttpError from '../errors/HttpError';
+import { Skill, User } from '../models/index.js';
+import HttpError from '../errors/HttpError.js';
 import {
   editUserSchema,
   editBioSchema,
   interestSchema,
   skillSchema,
-} from '../utils/validationSchemas';
+} from '../utils/validationSchemas.js';
 
 export const dashboardController = {
   async show(req: Request, res: Response, next: NextFunction) {

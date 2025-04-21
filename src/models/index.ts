@@ -1,12 +1,12 @@
-import { AvailabilityModel } from './Availability';
-import { SkillModel } from './Skill';
-import { UserModel } from './User';
-import { CategoryModel } from './Category';
-import { ReviewModel } from './Review';
-import { MessageModel } from './Message';
+import { AvailabilityModel } from './Availability.js';
+import { SkillModel } from './Skill.js';
+import { UserModel } from './User.js';
+import { CategoryModel } from './Category.js';
+import { ReviewModel } from './Review.js';
+import { MessageModel } from './Message.js';
 import { BelongsTo, BelongsToMany, HasMany } from 'sequelize-typescript';
-import { UserSkill } from './UserSkill';
-import { UserInterest } from './UserInterest';
+import { UserSkill } from './UserSkill.js';
+import { UserInterest } from './UserInterest.js';
 
 export class User extends UserModel {
   @BelongsToMany(
@@ -50,8 +50,8 @@ export class Skill extends SkillModel {
     'user_id',
   )
   interestsUsers?: User[];
-  @BelongsTo(() => Category, 'category_id')
-  category?: Category;
+  @BelongsTo(() => CategoryModel, 'category_id')
+  category?: CategoryModel;
 }
 export class Review extends ReviewModel {
   @BelongsTo(() => User, 'reviewer_id')

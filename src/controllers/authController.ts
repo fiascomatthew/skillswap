@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
-import { User } from '../models';
+import { User } from '../models/index.js';
 import bcrypt from 'bcrypt';
-import { loginSchema, registerSchema } from '../utils/validationSchemas';
+import { loginSchema, registerSchema } from '../utils/validationSchemas.js';
 
 export const authController = {
   getLoginPage(req: Request, res: Response) {

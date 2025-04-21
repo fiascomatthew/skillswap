@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import HttpError from '../errors/HttpError';
+import HttpError from '../errors/HttpError.js';
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
   next(new HttpError('Page not found', 404));

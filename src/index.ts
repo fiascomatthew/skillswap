@@ -3,12 +3,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import session from 'express-session';
 import helmet from 'helmet';
-import router from './routers/router';
-import notFound from './middlewares/notFound';
-import errorHandler from './middlewares/errorHandler';
-import './models/sequelizeClient';
+import router from './routers/router.js';
+import notFound from './middlewares/notFound.js';
+import errorHandler from './middlewares/errorHandler.js';
+import './models/sequelizeClient.js';
 import dotenv from 'dotenv';
-import { connectedUserToLocals } from './middlewares/connectedUserToLocals';
+import { connectedUserToLocals } from './middlewares/connectedUserToLocals.js';
 
 dotenv.config();
 
