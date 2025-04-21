@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc && npm run copy-views",
+    "build": "tsc",
     "copy-views": "copyfiles -u 1 src/views/**/* dist/views",
     "dev": "npx tsx --watch src/index.ts"
   },
