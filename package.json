@@ -3,7 +3,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "copy-assets": "copyfiles -u 2 src/views/**/* dist/views && copyfiles -u 2 src/public/**/* dist/public",
+    "copy-assets": "copyfiles -u 2 src/views/**/* dist && copyfiles -u 2 src/public/**/* dist",
     "dev": "npx tsx --watch src/index.ts"
   },
   "dependencies": {
