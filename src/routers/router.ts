@@ -1,11 +1,11 @@
 import { Router, type Request, type Response } from 'express';
-import { authController } from '../controllers/authController';
-import { userController } from '../controllers/userController';
-import { catchErrors } from '../middlewares/catchErrors';
-import { getHomePage, getSkillsSearch } from '../controllers/mainController';
-import { isAuthorized } from '../middlewares/isAuthorized';
-import { sanitizeInputs } from '../middlewares/sanitizeInputs';
-import { dashboardController } from '../controllers/dashboardController';
+import { authController } from '../controllers/authController.js';
+import { userController } from '../controllers/userController.js';
+import { catchErrors } from '../middlewares/catchErrors.js';
+import { getHomePage, getSkillsSearch } from '../controllers/mainController.js';
+import { isAuthorized } from '../middlewares/isAuthorized.js';
+import { sanitizeInputs } from '../middlewares/sanitizeInputs.js';
+import { dashboardController } from '../controllers/dashboardController.js';
 
 const router = Router();
 

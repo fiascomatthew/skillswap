@@ -8,31 +8,21 @@ import {
   Message,
   UserSkill,
   UserInterest,
-} from './index';
+} from './index.js';
 
-export const sequelizeClient= new Sequelize(
-  // TODO: url in ENV
-  'postgres://postgres:postgres@db:5432/postgres',
-  {
-    dialect: 'postgres',
-    logging: true,
-    models: [
-      User,
-      Category,
-      Skill,
-      Availability,
-      Review,
-      Message,
-      UserSkill,
-      UserInterest,
-    ],
-    define: {
-      underscored: true,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-    },
+export const sequelizeClient = new Sequelize(process.env.DATABASE_URL as string, {
+  dialect: 'postgres',
+  logging: true,
+  models: [User, Category, Skill, Availability, Review, Message, UserSkill, UserInterest],
+  define: {
+    underscored: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   },
-);
+  dialectOptions: {
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  },
+});
 
 // test de la connexion à la base de données
 sequelizeClient
