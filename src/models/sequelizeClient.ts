@@ -12,7 +12,7 @@ import {
 
 export const sequelizeClient = new Sequelize(process.env.DATABASE_URL as string, {
   dialect: 'postgres',
-  logging: true,
+  logging: process.env.NODE_ENV !== 'test',
   models: [User, Category, Skill, Availability, Review, Message, UserSkill, UserInterest],
   define: {
     underscored: true,

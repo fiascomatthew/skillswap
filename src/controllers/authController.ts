@@ -6,7 +6,7 @@ import { loginSchema, registerSchema } from '../utils/validationSchemas.js';
 export const authController = {
   getLoginPage(req: Request, res: Response) {
     if (req.session?.connectedUser) {
-      return res.redirect('/register');
+      return res.redirect('/');
     }
 
     const returnTo = req.query.returnTo || '';
