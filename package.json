@@ -5,7 +5,7 @@
     "build": "tsc",
     "copy-assets": "copyfiles -u 1 'src/views/**/*.*' dist && copyfiles -u 1 'src/public/**/*.*' dist",
     "dev": "npx tsx --watch src/index.ts",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

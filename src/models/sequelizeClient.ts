@@ -8,7 +8,7 @@ import {
   Message,
   UserSkill,
   UserInterest,
-} from './index.js';
+} from './index';
 
 export const sequelizeClient = new Sequelize(process.env.DATABASE_URL as string, {
   dialect: 'postgres',

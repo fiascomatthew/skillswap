@@ -3,6 +3,13 @@ import type { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../src/models/index.ts';
 
+describe('environment Test', () => {
+  it('should load correct .env.test variables', () => {
+    expect(process.env.NODE_ENV).toBe('test');
+    expect(process.env.DATABASE_URL).toBe('postgres://test:test@db:5432/test');
+  });
+});
+
 describe('getLoginPage', () => {
   it('should redirect to home if user is already connected', () => {
     const req = { session: { connectedUser: {} }, query: {} } as unknown as Request;
