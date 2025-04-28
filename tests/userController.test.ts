@@ -53,8 +53,8 @@ describe('userController', () => {
       };
 
       (User.findByPk as jest.Mock)
-        .mockResolvedValueOnce(userMock) // pour chercher le user cible
-        .mockResolvedValueOnce(currentUserMock); // pour chercher le user connecté
+        .mockResolvedValueOnce(userMock)
+        .mockResolvedValueOnce(currentUserMock);
 
       req.params = { id: '2' };
 
@@ -70,7 +70,7 @@ describe('userController', () => {
 
   describe('toggleFollow', () => {
     it('should return 400 if trying to follow self', async () => {
-      req.params = { id: '1' }; // id = connecté
+      req.params = { id: '1' };
 
       await userController.toggleFollow(req as Request, res as Response, next);
 
@@ -104,8 +104,8 @@ describe('userController', () => {
       };
 
       (User.findByPk as jest.Mock)
-        .mockResolvedValueOnce(userMock) // cible
-        .mockResolvedValueOnce(currentUserMock); // connecté
+        .mockResolvedValueOnce(userMock)
+        .mockResolvedValueOnce(currentUserMock);
 
       req.params = { id: '2' };
 
@@ -127,8 +127,8 @@ describe('userController', () => {
       };
 
       (User.findByPk as jest.Mock)
-        .mockResolvedValueOnce(userMock) // cible
-        .mockResolvedValueOnce(currentUserMock); // connecté
+        .mockResolvedValueOnce(userMock)
+        .mockResolvedValueOnce(currentUserMock);
 
       req.params = { id: '2' };
 

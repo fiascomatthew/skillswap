@@ -3,7 +3,7 @@ import type { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../src/models/index.ts';
 
-describe('environment Test', () => {
+describe('test environment', () => {
   it('should load correct .env.test variables', () => {
     expect(process.env.NODE_ENV).toBe('test');
     expect(process.env.DATABASE_URL).toBe('postgres://test:test@db:5432/test');
