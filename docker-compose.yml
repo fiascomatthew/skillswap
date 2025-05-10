@@ -29,3 +29,17 @@ services:
     volumes:
       - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./src/db/seeding.sql:/docker-entrypoint-initdb.d/seeding.sql
+
+
+  db_test:
+    container_name: db_test
+    image: postgres:16
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    volumes:
+      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/db/seeding.sql:/docker-entrypoint-initdb.d/seeding.sql

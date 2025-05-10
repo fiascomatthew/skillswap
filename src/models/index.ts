@@ -1,12 +1,12 @@
-import { AvailabilityModel } from './Availability.js';
-import { SkillModel } from './Skill.js';
-import { UserModel } from './User.js';
-import { CategoryModel } from './Category.js';
-import { ReviewModel } from './Review.js';
-import { MessageModel } from './Message.js';
+import { AvailabilityModel } from './Availability';
+import { SkillModel } from './Skill';
+import { UserModel } from './User';
+import { CategoryModel } from './Category';
+import { ReviewModel } from './Review';
+import { MessageModel } from './Message';
 import { BelongsTo, BelongsToMany, HasMany } from 'sequelize-typescript';
-import { UserSkill } from './UserSkill.js';
-import { UserInterest } from './UserInterest.js';
+import { UserSkill } from './UserSkill';
+import { UserInterest } from './UserInterest';
 
 export class User extends UserModel {
   @BelongsToMany(

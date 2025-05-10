@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { User } from '../models/index.js';
-import { sequelizeClient } from '../models/sequelizeClient.js';
+import { User } from '../models/index';
+import { sequelizeClient } from '../models/sequelizeClient';
 import { Op } from 'sequelize';
-import { searchSkillSchema } from '../utils/validationSchemas.js';
+import { searchSkillSchema } from '../utils/validationSchemas';
 
 export const getHomePage = async (req: Request, res: Response) => {
   const users = await User.findAll({
