@@ -16,19 +16,14 @@ Copy the example environment file and rename it to `.env`:
 ```bash
 cp .env.example .env
 ```
-Then, fill in the required environment variables:
-
-NODE_ENV=development
-SESSION_SECRET=your-secret-value
-PORT=3000
-DATABASE_URL=postgresql://****:****@db:5432/****
+Then, fill in the required environment variables
 
 ### Start the project
 
 To build and run the application:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 This will:
