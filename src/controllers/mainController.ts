@@ -42,3 +42,23 @@ export const getSkillsSearch = async (req: Request, res: Response) => {
 
   res.render('pages/searchResults', { users, query, error: null });
 };
+
+export const getErrorPage = (req: Request, res: Response) => {
+  res.render('pages/error', { message: 'Une erreur est survenue' });
+};
+
+export const getAboutPage = (req: Request, res: Response) => {
+  res.render('pages/about');
+};
+
+export const getContactPage = (req: Request, res: Response) => {
+  res.render('pages/contact');
+};
+
+export const getTermsPage = (req: Request, res: Response) => {
+  res.render('pages/terms');
+};
+
+export const getGcuPage = (req: Request, res: Response) => {
+  res.render('pages/gcu');
+};
