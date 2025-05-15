@@ -8,7 +8,10 @@
       <button class="primary-button header__register">S'inscrire</button>
     </div>
   <% } else { %>
-    <a class="secondary-button header__logout" href="/logout">Se déconnecter</a>
+    <div class="header__register-login">
+      <a class="secondary-button header__dashboard" href="/dashboard">Mon profil</a>
+      <a class="secondary-button header__logout" href="/logout">Se déconnecter</a>
+    </div>
   <% } %>
 </header>
 
