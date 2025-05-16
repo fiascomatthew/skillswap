@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { User } from '../models/index.js';
-import { sequelizeClient } from '../models/sequelizeClient.js';
+import { User } from '../models/index';
+import { sequelizeClient } from '../models/sequelizeClient';
 import { Op } from 'sequelize';
-import { searchSkillSchema } from '../utils/validationSchemas.js';
+import { searchSkillSchema } from '../utils/validationSchemas';
 
 export const getHomePage = async (req: Request, res: Response) => {
   const users = await User.findAll({
@@ -41,4 +41,24 @@ export const getSkillsSearch = async (req: Request, res: Response) => {
   });
 
   res.render('pages/searchResults', { users, query, error: null });
+};
+
+export const getErrorPage = (req: Request, res: Response) => {
+  res.render('pages/error', { message: 'Une erreur est survenue' });
+};
+
+export const getAboutPage = (req: Request, res: Response) => {
+  res.render('pages/about');
+};
+
+export const getContactPage = (req: Request, res: Response) => {
+  res.render('pages/contact');
+};
+
+export const getTermsPage = (req: Request, res: Response) => {
+  res.render('pages/terms');
+};
+
+export const getGcuPage = (req: Request, res: Response) => {
+  res.render('pages/gcu');
 };

@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express';
-import { User } from '../models/index.js';
+import { User } from '../models/index';
 import bcrypt from 'bcrypt';
-import { loginSchema, registerSchema } from '../utils/validationSchemas.js';
+import { loginSchema, registerSchema } from '../utils/validationSchemas';
 
 export const authController = {
   getLoginPage(req: Request, res: Response) {
     if (req.session?.connectedUser) {
-      return res.redirect('/register');
+      return res.redirect('/');
     }
 
     const returnTo = req.query.returnTo || '';
